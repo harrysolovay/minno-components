@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
 import { AppLoading, Font } from 'expo'
-import Navigator from 'navigation'
 import { Loading } from 'components'
 import Logo from 'assets/images/logo.png'
+import Navigator from 'navigation'
 
 class App extends Component {
 

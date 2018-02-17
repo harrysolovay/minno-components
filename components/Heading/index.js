@@ -1,12 +1,10 @@
-import Text, { Title, Subtitle } from './Text'
 import Group from './Group'
+import Groups from './Groups'
 import Heading from './Heading'
 
 export {
-  Text as HeadingText,
-  Title as HeadingTitle,
-  Subtitle as HeadingSubtitle,
-  Group as HeadingGroup
+  Group as HeadingGroup,
+  Groups as HeadingGroups
 }
 
 export default Heading

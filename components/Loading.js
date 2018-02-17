@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Image, Animated, Easing, StyleSheet } from 'react-native'
-import { Center, HeadingText, HeadingTitle, HeadingSubtitle, HeadingGroup } from 'components'
+import { Center, HeadingGroup } from 'components'
 import { EvilIcons } from '@expo/vector-icons'
-import { blue } from 'constants/colors'
 
 const AnimatedIcon = Animated.createAnimatedComponent(EvilIcons)
 
@@ -34,7 +33,7 @@ class Loading extends Component {
           style={[ styles.spinner, { transform : [{ rotate : spin }] } ]}
           name='spinner-3'
           size={ 40 }
-          color={ blue }
+          color='#5990dc'
         />
         {
           ( this.props.title || this.props.subtitle ) &&

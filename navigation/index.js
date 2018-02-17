@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-import { Center, ShowActions } from 'components'
+import { Center, Heading, Text } from 'components'
+import { ShowActions } from 'components'
 
 class Navigator extends Component {
 
   render() {
     return (
       <Center>
-        <ShowActions />
+        <Heading
+          title='Harry Solovay'
+          subtitle='hsolvz'
+          right={ <ShowActions /> }
+        />
       </Center>
     )
   }

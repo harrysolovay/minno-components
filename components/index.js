@@ -3,7 +3,7 @@ import Center from './Center'
 import Loading from './Loading'
 import Touchable from './Touchable'
 import ShowActions from './ShowActions'
-import Heading, { HeadingText, HeadingTitle, HeadingSubtitle, HeadingGroup } from './Heading'
+import Heading, { HeadingGroup, HeadingGroups } from './Heading'
 
 export {
   Text,
@@ -12,9 +12,7 @@ export {
   Touchable,
   ShowActions,
 
-  HeadingText,
-  HeadingTitle,
-  HeadingSubtitle,
   HeadingGroup,
+  HeadingGroups,
   Heading
 }
