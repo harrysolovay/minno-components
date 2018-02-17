@@ -1,0 +1,36 @@
+{
+  "name": "Minno",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^3.1.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "jest-expo": "25.0.0",
+    "react-native-scripts": "1.11.1",
+    "react-test-renderer": "16.2.0"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "node node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "expo": "^25.0.0",
+    "react": "16.2.0",
+    "react-native": "0.52.0",
+    "react-native-actionsheet": "^2.3.0",
+    "react-native-code-input": "^1.0.6",
+    "react-native-iphone-x-helper": "^1.0.2",
+    "react-native-keyboard-accessory": "0.0.4",
+    "react-native-modalbox": "^1.4.2",
+    "react-native-scrollable-tab-view": "^0.8.0",
+    "react-native-snap-carousel": "^3.6.0",
+    "react-navigation": "^1.0.3"
+  }
+}
