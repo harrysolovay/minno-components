@@ -34,10 +34,15 @@ class Heading extends Component {
                 subtitle={ this.props.subtitle }
               />
         }
-        <Right
-          groups={ this.props.groups }
-          onWidth={ this.setPaddingRight }
-        >{ this.props.right }</Right>
+        {
+          this.props.right &&
+            <Right
+              groups={ this.props.groups }
+              onWidth={ this.setPaddingRight }
+            >
+              { this.props.right }
+            </Right>
+        }
       </View>
     )
   }
@@ -78,9 +83,7 @@ class Right extends Component {
 const styles = StyleSheet.create({
   view : {
     flexDirection : 'row',
-    alignSelf : 'stretch',
-    borderTopWidth : 1,
-    borderBottomWidth : 1
+    alignSelf : 'stretch'
   },
   scrollView : {
     flexDirection : 'row',
