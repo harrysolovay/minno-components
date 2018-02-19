@@ -16,6 +16,12 @@ class Heading extends Component {
     return (
       <View style={[ styles.view, this.props.style ]}>
         {
+          this.props.left &&
+            <View style={ styles.left }>
+              { this.props.left }
+            </View>
+        }
+        {
           this.props.groups
             ? <ScrollView
                 contentContainerStyle={ styles.scrollView }
@@ -88,6 +94,11 @@ const styles = StyleSheet.create({
   scrollView : {
     flexDirection : 'row',
     justifyContent : 'flex-start'
+  },
+  left : {
+    flexDirection : 'column',
+    justifyContent : 'center',
+    paddingLeft : 15
   },
   right : {
     position : 'absolute',

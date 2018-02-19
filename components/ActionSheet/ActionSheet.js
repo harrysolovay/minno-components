@@ -43,8 +43,10 @@ class ActionSheet extends Component {
                 key={ i }
               >
                 <Heading
+                  left={ option.left }
                   title={ option.title }
                   subtitle={ option.subtitle }
+                  right={ option.right }
                 />
               </Touchable>
             ))
@@ -88,9 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor : '#fff',
     alignSelf : 'stretch',
     paddingTop : 15,
-    paddingRight : 15,
-    paddingBottom : 15,
-    paddingLeft : 15,
+    paddingBottom : 15
   }
 })
 

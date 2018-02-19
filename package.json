@@ -31,6 +31,8 @@
     "react-native-modalbox": "^1.4.2",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-snap-carousel": "^3.6.0",
-    "react-navigation": "^1.0.3"
+    "react-native-status-bar-height": "^2.0.0",
+    "react-navigation": "^1.0.3",
+    "rn-sliding-up-panel": "^1.1.7"
   }
 }
