@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import { Header, TabBar, ActionSheet } from 'components'
+import { Header, SearchIcon, TabBar, ActionSheet, ActionSheetTrigger } from 'components'
 import { Direct, Posts, Capture, Account } from 'screens'
 import { HEADER_HEIGHT } from 'constants'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
@@ -20,10 +20,12 @@ class Tabs extends Component {
   render() {
     return (
       <View style={{ flex : 1 }}>
-        <ActionSheet />
         <View style={{ flex : 1 }}>
           <Header
             style={{ top : this.state.headerOffset }}
+            left='back'
+            center='search'
+            right={ <ActionSheetTrigger /> }
           />
           <ScrollableTabView
             initialPage={ 1 }
@@ -47,6 +49,7 @@ class Tabs extends Component {
             goToPage={ this.goToPage }
           />
         </View>
+        <ActionSheet />
       </View>
     )
   }

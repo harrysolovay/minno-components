@@ -9,9 +9,7 @@ class ActionSheetTrigger extends Component {
   render() {
     return (
       <Touchable
-        onPress={ () => {
-          this.props.viewStore.showActionSheet(this.props.options)
-        }}
+        onPress={ () => this.props.viewStore.showActionSheet(this.props.options) }
       >
         <Ionicons
           name='ios-more-outline'

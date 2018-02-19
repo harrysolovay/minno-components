@@ -8,6 +8,7 @@ const Text = (props) => (
       props.heading ? styles.heading : null,
       props.title ? styles.title : null,
       props.subtitle ? styles.subtitle : null,
+      props.body ? styles.body : null,
       props.right ? styles.right : null,
       props.action ? styles.action : null,
       props.notice ? styles.notice : null,
@@ -33,6 +34,10 @@ const styles = StyleSheet.create({
   subtitle : {
     fontSize : 16,
     lineHeight : 16
+  },
+  body : {
+    fontSize : 20,
+    lineHeight : 20
   },
   right : {
     fontSize : 16,

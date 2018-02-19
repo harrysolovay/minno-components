@@ -9,10 +9,6 @@ import Modal from 'react-native-modalbox'
 @observer
 class ActionSheet extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <Modal
@@ -71,7 +67,7 @@ const styles = StyleSheet.create({
   },
   backdrop : {
     flex : 1,
-    alignSelf : 'stretch'
+    alignSelf : 'stretch',
   },
   handle : {
     width : 45,
