@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { AppLoading, Font } from 'expo'
 import { Loading } from 'components'
 import Logo from 'assets/images/logo.png'
-import Navigator from 'navigation'
+import { Provider } from 'mobx-react'
+import stores from 'stores'
+import { Navigator } from 'navigation'
 
 class App extends Component {
 
@@ -27,7 +29,9 @@ class App extends Component {
             title='loading'
             subtitle='just a sec'
           />
-        : <Navigator />
+        : <Provider { ...stores }>
+            <Navigator />
+          </Provider>
   }
 
   load = async() => {

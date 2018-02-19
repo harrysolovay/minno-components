@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Text } from 'react-native'
-import ScrollView from 'components'
+import { Screen } from 'components'
 
 class Account extends Component {
 
   render() {
     return (
-      <TabsScrollView>
+      <Screen hasHeader hasTabBar>
         <Text>Account</Text>
-      </TabsScrollView>
+      </Screen>
     )
   }
 

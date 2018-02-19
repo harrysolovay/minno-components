@@ -5,7 +5,7 @@ import { HEADER_HEIGHT } from 'constants'
 
 const Header = (props) => {
   return (
-    <View { ...props } style={[ props.style, styles.container ]}>
+    <View style={[ styles.container, props.style ]}>
 
     </View>
   )
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     top : 0,
     right : 0,
     left : 0,
-    zIndex : 1000,
+    zIndex : 2,
     height : HEADER_HEIGHT,
     backgroundColor : '#fff',
     borderBottomWidth : 1,

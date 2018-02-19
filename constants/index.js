@@ -1,4 +1,5 @@
 import {
+  SCREEN_HEIGHT,
   STATUSBAR_HEIGHT,
   HEADER_HEIGHT,
   NOTCH_HEIGHT,
@@ -7,6 +8,7 @@ import {
 } from './Layout'
 
 export {
+  SCREEN_HEIGHT,
   STATUSBAR_HEIGHT,
   HEADER_HEIGHT,
   NOTCH_HEIGHT,

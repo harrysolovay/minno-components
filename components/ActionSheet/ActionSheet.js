@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
+import { inject, observer } from 'mobx-react'
 import { View, StyleSheet } from 'react-native'
 import { Touchable, Heading } from 'components'
+import { NOTCH_HEIGHT } from 'constants'
 import Modal from 'react-native-modalbox'
 
+@inject('viewStore')
+@observer
 class ActionSheet extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      showing : false,
-      options : [{ title : 'no options yet', subtitle : 'this is a bug!' }]
-    }
   }
 
   render() {
     return (
       <Modal
         style={ styles.modal }
-        isOpen={ this.state.showing }
+        isOpen={ this.props.viewStore.actionSheet.showing }
         swipeToClose={ true }
         backdropPressToClose={ true }
         onClosed={ this.hide }
@@ -34,7 +34,7 @@ class ActionSheet extends Component {
           style={ styles.innerView }
         >
           {
-            this.state.options.map((option, i) => (
+            this.props.viewStore.actionSheet.options.map((option, i) => (
               <Touchable
                 onPress={ () => {
                   this.hide()
@@ -56,14 +56,8 @@ class ActionSheet extends Component {
     )
   }
 
-  show = (options) => {
-    this.setState({ options }, () => {
-      this.setState({ showing : true })
-    })
-  }
-
   hide = () => {
-    this.setState({ showing : false })
+    this.props.viewStore.actionSheet.showing = false
   }
 
 }
@@ -90,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor : '#fff',
     alignSelf : 'stretch',
     paddingTop : 15,
-    paddingBottom : 15
+    paddingBottom : 15 + NOTCH_HEIGHT
   }
 })
 
