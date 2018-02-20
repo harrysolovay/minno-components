@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { View, StyleSheet } from 'react-native'
-import { Touchable, Heading } from 'components'
+import { StyleSheet } from 'react-native'
+import { Touchable, Heading, View } from 'components'
 import { NOTCH_HEIGHT } from 'constants'
 import Modal from 'react-native-modalbox'
 

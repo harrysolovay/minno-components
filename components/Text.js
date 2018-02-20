@@ -3,28 +3,32 @@ import { Text as ReactNativeText, StyleSheet } from 'react-native'
 
 const Text = (props) => (
   <ReactNativeText
+    { ...props }
     style={[
+      styles.text,
       props.header ? styles.header : null,
       props.heading ? styles.heading : null,
       props.title ? styles.title : null,
       props.subtitle ? styles.subtitle : null,
-      props.body ? styles.body : null,
       props.right ? styles.right : null,
       props.action ? styles.action : null,
       props.notice ? styles.notice : null,
+      props.style
     ]}
-    { ...props }
   />
 )
 
 const styles = StyleSheet.create({
+  text : {
+    fontFamily : 'HelveticaNeueLight',
+    color : '#000',
+    fontSize : 20,
+    lineHeight : 20
+  },
   header : {
     fontFamily : 'FuturaLTBook',
     fontSize : 18,
-    color : '#000'
-  },
-  heading : {
-    fontFamily : 'HelveticaNeueLight',
+    lineHeight : 18,
     color : '#000'
   },
   title : {
@@ -34,10 +38,6 @@ const styles = StyleSheet.create({
   subtitle : {
     fontSize : 16,
     lineHeight : 16
-  },
-  body : {
-    fontSize : 20,
-    lineHeight : 20
   },
   right : {
     fontSize : 16,

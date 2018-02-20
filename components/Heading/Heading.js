@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
-import { HeadingGroups, HeadingGroup, Text } from 'components'
+import { StyleSheet } from 'react-native'
+import { View, ScrollView, HeadingGroups, HeadingGroup, Text } from 'components'
 import { LinearGradient } from 'expo'
 
 class Heading extends Component {

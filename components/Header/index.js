@@ -1,4 +1,3 @@
-import Header, { BackButton, SearchIcon, SearchButton } from './Header'
+import Header from './Header'
 
-export { BackButton, SearchIcon, SearchButton }
 export default Header

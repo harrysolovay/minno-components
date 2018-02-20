@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import { HeadingGroup } from 'components'
+import { StyleSheet } from 'react-native'
+import { View, HeadingGroup } from 'components'
 
 const Groups = (props) => (
   ( props.precedent || props.groups )

@@ -1,40 +1,50 @@
+import { View, Image, ScrollView } from 'react-native'
+import { FlatList } from './FlatList'
+
 import Text from './Text'
-import TextInput from './TextInput'
-import Button from './Button'
-import Center from './Center'
-import Loading from './Loading'
 import Touchable from './Touchable'
+import Button from './Button'
+import Graphic from './Graphic'
+import TextInput from './TextInput'
+
+import Loading from './Loading'
 import Screen from './Screen'
-import ActionSheet, { ActionSheetTrigger } from './ActionSheet'
-import Heading, { HeadingGroup, HeadingGroups } from './Heading'
-import Header, { BackButton, SearchIcon, SearchButton } from './Header'
+import Center from './Center'
 import KeyboardAvoidingView from './KeyboardAvoidingView'
+
+import ActionSheet, { ActionSheetTrigger } from './ActionSheet'
+
+import Heading, { HeadingGroup, HeadingGroups } from './Heading'
+import Header from './Header'
+
 import TabBar from './TabBar'
+import Composer from './Composer'
+
 
 export {
 
-  Text,
-  TextInput,
-  Button,
-  Center,
-  Loading,
-  Touchable,
+  View, Image,
+  ScrollView,
+  FlatList,
 
+  Text,
+  Touchable,
+  Button,
+  Graphic,
+  TextInput,
+
+  Loading,
   Screen,
+  Center,
   KeyboardAvoidingView,
 
-  ActionSheet,
-  ActionSheetTrigger,
+  ActionSheet, ActionSheetTrigger,
 
   Header,
-  BackButton,
-  SearchIcon,
-  SearchButton,
 
-  HeadingGroup,
-  HeadingGroups,
-  Heading,
+  Heading, HeadingGroup, HeadingGroups,
 
-  TabBar
+  TabBar,
+  Composer
 
 }

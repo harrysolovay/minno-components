@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { Touchable } from 'components'
-import { Ionicons } from '@expo/vector-icons'
+import { Graphic } from 'components'
 
 @inject('viewStore')
 @observer
 class ActionSheetTrigger extends Component {
   render() {
     return (
-      <Touchable
-        onPress={ () => this.props.viewStore.showActionSheet(this.props.options) }
-      >
-        <Ionicons
-          name='ios-more-outline'
-          size={ 30 }
-          color='#000'
-        />
-      </Touchable>
+      <Graphic
+        name='showActions'
+        onPress={ () => {
+          this.props.viewStore.showActionSheet(
+            this.props.options
+          )
+        }}
+      />
     )
   }
 }

@@ -1,39 +1,10 @@
 import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
-import { Text, Touchable } from 'components'
+import { StyleSheet } from 'react-native'
+import { View, Text, Touchable, TextInput, Graphic } from 'components'
 import { HEADER_HEIGHT } from 'constants'
-import { Ionicons } from '@expo/vector-icons'
-import SearchIconImage from 'assets/images/search.png'
-
-const BackButton = (props) => (
-  <Touchable
-    { ...props }
-  >
-    <Ionicons
-      name='ios-arrow-round-back'
-      size={ 40 }
-      color='#000'
-    />
-  </Touchable>
-)
-
-const SearchIcon = () => (
-  <Image
-    style={ styles.searchIcon }
-    source={ SearchIconImage }
-  />
-)
-
-const SearchButton = (props) => (
-  <Touchable
-    { ...props }
-  >
-    <SearchIcon />
-  </Touchable>
-)
 
 const Header = (props) => (
-  <View style={[ styles.container, props.style ]}>
+  <View style={[ styles.container, { transform : [{ translateY : props.offset }] } ]}>
     <Touchable
       style={ styles.bar }
       onPress={ props.onPress }
@@ -43,7 +14,7 @@ const Header = (props) => (
       >
         {
           props.left === 'back'
-            ? <BackButton />
+            ? <Graphic name='back' onPress={ () => console.log('back button pressed') } />
             : props.left
         }
       </View>
@@ -53,8 +24,8 @@ const Header = (props) => (
         {
           typeof props.center === 'string'
             ? props.center === 'search'
-              ? <SearchIcon />
-              : <Text header>{ props.center }</Text>
+              ? <Graphic name='search' onPress={ () => console.log('search button pressed') } />
+              : <Text header>{ this.props.center }</Text>
             : props.center
         }
       </View>
@@ -67,11 +38,8 @@ const Header = (props) => (
   </View>
 )
 
+
 const styles = StyleSheet.create({
-  searchIcon : {
-    width : 20,
-    height : 20
-  },
   container : {
     position : 'absolute',
     top : 0,
@@ -106,5 +74,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export { BackButton, SearchIcon, SearchButton }
 export default Header

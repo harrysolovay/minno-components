@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import { Text } from 'components'
+import { StyleSheet } from 'react-native'
+import { View, Text } from 'components'
 
 const Group = (props) => (
   ( props.title || props.subtitle )
