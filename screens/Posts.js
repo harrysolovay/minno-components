@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Screen, Heading, ActionSheet, ActionSheetTrigger } from 'components'
-import { FlatList } from 'react-native'
+import { Screen, View, Heading, ActionSheet, ActionSheetTrigger, FlatList } from 'components'
 
 class Posts extends Component {
 
@@ -8,51 +7,41 @@ class Posts extends Component {
     return (
       <Screen hasHeader hasBothBars>
         <FlatList
+          showsVerticalScrollIndicator={ false }
           data={[
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' },
-            { title : 'Post Title', subtitle : 'Post Subtitle' }
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' }
           ]}
           renderItem={ ({ item }) => {
             return (
               <Heading
-                title={ item.title }
-                subtitle={ item.subtitle }
-                key={ item.i }
+                { ...item }
               />
             )
           }}

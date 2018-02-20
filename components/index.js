@@ -1,10 +1,12 @@
-import { View, Image, ScrollView } from 'react-native'
-import { FlatList } from './FlatList'
+import View from './View'
+import FlatList from './FlatList'
 
 import Text from './Text'
+import Image from './Image'
+import Graphic from './Graphic'
+
 import Touchable from './Touchable'
 import Button from './Button'
-import Graphic from './Graphic'
 import TextInput from './TextInput'
 
 import Loading from './Loading'
@@ -24,7 +26,6 @@ import Composer from './Composer'
 export {
 
   View, Image,
-  ScrollView,
   FlatList,
 
   Text,

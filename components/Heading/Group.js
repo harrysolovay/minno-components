@@ -4,7 +4,12 @@ import { View, Text } from 'components'
 
 const Group = (props) => (
   ( props.title || props.subtitle )
-    ? <View style={[ props.style, styles.view ]}>
+    ? <View
+        style={[
+          props.style,
+          styles.view,
+          props.precedent ? styles.precedent : null
+        ]}>
         {
           props.title &&
             <Text heading title>{ props.title }</Text>
@@ -23,6 +28,11 @@ const styles = StyleSheet.create({
     paddingTop : 12,
     paddingBottom : 6,
     paddingLeft : 12
+  },
+  precedent : {
+    paddingRight : 14,
+    borderRightWidth : 1,
+    marginRight : 14
   }
 })
 

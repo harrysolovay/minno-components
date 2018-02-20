@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { View, ScrollView, HeadingGroups, HeadingGroup, Text } from 'components'
+import { View, HeadingGroups, HeadingGroup, Text, FlatList } from 'components'
 import { LinearGradient } from 'expo'
 
 class Heading extends Component {
@@ -23,18 +23,21 @@ class Heading extends Component {
         }
         {
           this.props.groups
-            ? <ScrollView
-                contentContainerStyle={ styles.scrollView }
+            ? <FlatList
+                contentContainerStyle={[ styles.scrollView, { paddingRight : this.state.paddingRight } ]}
                 horizontal={ true }
                 showsHorizontalScrollIndicator={ false }
                 showsVerticalScrollIndicator={ false }
-              >
-                <HeadingGroups
-                  style={{ paddingRight : this.state.paddingRight }}
-                  precedent={ this.props.precedent }
-                  groups={ this.props.groups }
-                />
-              </ScrollView>
+                data={ this.props.groups }
+                renderItem={ ({ item }) => {
+                  return (
+                    <HeadingGroup
+                      { ...item }
+                    />
+                  )
+                }}
+                keyExtractor={ (item, index) => index }
+              />
             : <HeadingGroup
                 title={ this.props.title }
                 subtitle={ this.props.subtitle }
