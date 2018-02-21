@@ -17,7 +17,7 @@ class TabBar extends Component {
                   touchableStyle={ styles.tab }
                   name={ name }
                   color={ this.props.activeTab === i ? '#4a90e2' : '#000' }
-                  onPress={ () => this.props.goToPage(i) }
+                  onPress={ () => this.props.goTo(i) }
                   key={ i }
                 />
               )

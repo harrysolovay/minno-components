@@ -38,7 +38,7 @@ class Loading extends Component {
         {
           ( this.props.title || this.props.subtitle ) &&
             <HeadingGroup
-              style={ styles.headingGroup }
+              center
               title={ this.props.title }
               subtitle={ this.props.subtitle }
             />
@@ -71,9 +71,6 @@ const styles = StyleSheet.create({
   spinner : {
     marginTop : 11,
     paddingTop : 2
-  },
-  headingGroup : {
-    alignItems : 'center'
   }
 })
 

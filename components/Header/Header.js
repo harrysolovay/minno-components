@@ -1,43 +1,46 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { View, Text, Touchable, TextInput, Graphic } from 'components'
+import React, { Component } from 'react'
+import { Animated, View, StyleSheet } from 'react-native'
+import { Text, Touchable, TextInput, Graphic } from 'components'
 import { HEADER_HEIGHT } from 'constants'
 
-const Header = (props) => (
-  <View style={[ styles.container, { transform : [{ translateY : props.offset }] } ]}>
-    <Touchable
-      style={ styles.bar }
-      onPress={ props.onPress }
-    >
-      <View
-        style={[ styles.barItem, styles.left ]}
-      >
-        {
-          props.left === 'back'
-            ? <Graphic name='back' onPress={ () => console.log('back button pressed') } />
-            : props.left
-        }
-      </View>
-      <View
-        style={[ styles.barItem, styles.center ]}
-      >
-        {
-          typeof props.center === 'string'
-            ? props.center === 'search'
-              ? <Graphic name='search' onPress={ () => console.log('search button pressed') } />
-              : <Text header>{ this.props.center }</Text>
-            : props.center
-        }
-      </View>
-      <View
-        style={[ styles.barItem, styles.right ]}
-      >
-        { props.right }
-      </View>
-    </Touchable>
-  </View>
-)
-
+class Header extends Component {
+  render() {
+    return (
+      <Animated.View style={[ styles.container, this.props.style ]}>
+        <Touchable
+          style={ styles.bar }
+          onPress={ this.props.onPress }
+        >
+          <View
+            style={[ styles.barItem, styles.left ]}
+          >
+            {
+              this.props.left === 'back'
+                ? <Graphic name='back' onPress={ () => console.log('back button pressed') } />
+                : this.props.left
+            }
+          </View>
+          <View
+            style={[ styles.barItem, styles.center ]}
+          >
+            {
+              typeof this.props.center === 'string'
+                ? this.props.center === 'search'
+                  ? <Graphic name='search' onPress={ () => console.log('search button pressed') } />
+                  : <Text header>{ this.props.center }</Text>
+                : this.props.center
+            }
+          </View>
+          <View
+            style={[ styles.barItem, styles.right ]}
+          >
+            { this.props.right }
+          </View>
+        </Touchable>
+      </Animated.View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   container : {

@@ -30,21 +30,13 @@ class Posts extends Component {
             { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },
-            { title : 'title', subtitle : 'subtitle' },
-            { title : 'title', subtitle : 'subtitle' },
-            { title : 'title', subtitle : 'subtitle' },
-            { title : 'title', subtitle : 'subtitle' },
-            { title : 'title', subtitle : 'subtitle' },
-            { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' }
           ]}
-          renderItem={ ({ item }) => {
-            return (
-              <Heading
-                { ...item }
-              />
-            )
-          }}
+          renderItem={ ({ item, i }) => (
+            <Heading
+              { ...item }
+            />
+          )}
           keyExtractor={ (item, index) => index }
         />
       </Screen>

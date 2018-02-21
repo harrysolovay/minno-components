@@ -1,114 +1,81 @@
 import React, { Component } from 'react'
 import { Header, TabBar, View, Composer, ActionSheet } from 'components'
+import { HEADER_HEIGHT, TAB_BAR_HEIGHT, SCREEN_WIDTH } from 'constants'
 import { Posts, Capture, Account } from 'screens'
-import { HEADER_HEIGHT, TAB_BAR_HEIGHT } from 'constants'
-import ScrollableTabView from 'react-native-scrollable-tab-view'
+import Carousel from 'react-native-snap-carousel'
+import { Animated } from 'react-native'
 
+const AnimatedCarousel = Animated.createAnimatedComponent(Carousel)
 
-
-class GhostTabBar extends Component {
-
-  render() {
-    return <View pointerEvents='none' style={{ opacity : 0 }} />
-  }
-
-  getActiveTab = () => {
-    return this.props.activeTab
-  }
-
-  goToPage = (i) => {
-    this.props.goToPage(i)
-  }
-
-}
+const INITIAL_TAB = 0
 
 
 
 class Tabs extends Component {
 
-  tabs = [ 'Posts', 'Capture', 'Account' ]
-
   constructor(props) {
     super(props)
     this.state = {
-      initialized : false,
-      activeTab : 0,
-      headerOffset : 0,
-      composerOffset : 0
+      initialTab : INITIAL_TAB,
+      activeTab : INITIAL_TAB,
+      scrollX : new Animated.Value(INITIAL_TAB)
     }
   }
 
   render() {
+
+    let headerTranslation = this.state.scrollX.interpolate({
+      inputRange : [ 0, 375, 750 ],
+      outputRange : [ 0, -HEADER_HEIGHT, 0 ]
+    })
+
+    let composerTranslation = this.state.scrollX.interpolate({
+      inputRange : [ 0, 375, 750 ],
+      outputRange : [ 0, 50, 50 ]
+    })
+
     return (
       <View style={{ flex : 1 }}>
 
         <Header
-          offset={ this.state.headerOffset }
+          style={{ transform : [{ translateY : headerTranslation }] }}
           center='search'
           onPress={ () => console.log('header pressed') }
         />
 
-        <ScrollableTabView
-          initialPage={ 0 }
-          tabBarPosition={ 'bottom' }
-          renderTabBar={ () => (
-            <GhostTabBar
-              ref={ ref => this.ghostTabBar = ref }
-            />
-          )}
-          onScroll={ scrollX => {
-            this.setState({
-              activeTab : Math.round(scrollX),
-              headerOffset : this.getHeaderOffset(scrollX),
-              composerOffset : this.getComposerOffset(scrollX)
-            })
-          } }
-        >
-          <Posts />
-          <Capture />
-          <Account />
-        </ScrollableTabView>
+        <AnimatedCarousel
+          ref={ ref => this.carousel = ref }
+          data={[ <Posts />, <Capture />, <Account /> ]}
+          renderItem={ ({ item, i }) => item }
+          firstItem={ this.props.initialTab }
+          onScroll={ Animated.event([
+            { nativeEvent : { contentOffset : { x : this.state.scrollX } } }
+          ], { useNativeDriver : true }) }
+          onSnapToItem={ i => this.setState({ activeTab : i }) }
+          sliderWidth={ SCREEN_WIDTH }
+          itemWidth={ SCREEN_WIDTH }
+          slideStyle={{ width : SCREEN_WIDTH }}
+          inactiveSlideOpacity={ 1 }
+          inactiveSlideScale={ 1 }
+        />
 
         <Composer
-          offset={ this.state.composerOffset }
+          style={{ transform : [{ translateY : composerTranslation }] }}
         />
 
         <TabBar
           activeTab={ this.state.activeTab }
-          goToPage={ this.goToPage }
+          goTo={ () => console.log('happened') }
         />
 
       </View>
     )
-  }
 
-  goToPage = () => {
-    return false
   }
 
   componentDidMount() {
-    this.goToPage = this.ghostTabBar.goToPage
-    this.setState({
-      activeTab : this.ghostTabBar.activeTab,
-      headerOffset : this.getHeaderOffset(this.ghostTabBar.activeTab),
-      composerOffset : this.getComposerOffset(this.ghostTabBar.activeTab)
-    })
-  }
-
-  getHeaderOffset = (scrollX) => {
-    if(scrollX > 0 && scrollX <= 1)
-      return -(HEADER_HEIGHT - (HEADER_HEIGHT * (1 - scrollX)))
-    if(scrollX > 1 && scrollX <= 2)
-      return -(HEADER_HEIGHT - (HEADER_HEIGHT * (scrollX - 1)))
-    return 0
-  }
-
-  getComposerOffset = (scrollX) => {
-    if(scrollX > 0 && scrollX <= 1)
-      return 51 - (51 * (1 - scrollX))
-    if(scrollX > 1)
-      return 51
-    return 0
+    console.log('happened')
+    console.log(this.carousel.snapToItem)
   }
 
 }

@@ -8,7 +8,8 @@ const Group = (props) => (
         style={[
           props.style,
           styles.view,
-          props.precedent ? styles.precedent : null
+          props.precedent ? styles.precedent : null,
+          props.center ? styles.center : null
         ]}>
         {
           props.title &&
@@ -31,8 +32,11 @@ const styles = StyleSheet.create({
   },
   precedent : {
     paddingRight : 14,
-    borderRightWidth : 1,
-    marginRight : 14
+    borderRightWidth : 1
+  },
+  center : {
+    paddingLeft : 0,
+    alignItems : 'center'
   }
 })
 

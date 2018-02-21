@@ -1,22 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { KeyboardAvoidingView, View, TextInput } from 'components'
 import { TAB_BAR_HEIGHT } from 'constants'
-import { StyleSheet } from 'react-native'
+import { Animated, StyleSheet } from 'react-native'
 
-const Composer = (props) => (
-  <KeyboardAvoidingView
-    style={[ styles.keyboardAvoidingView, { transform : [{ translateY : props.offset }] } ]}
-  >
-    <View
-      style={ styles.view }
-    >
-      <TextInput
-        placeholder='what is up L'
-        returnKeyType='next'
-      />
-    </View>
-  </KeyboardAvoidingView>
-)
+class UnanimatedComposer extends Component {
+  render() {
+    return (
+      <KeyboardAvoidingView
+        style={[ styles.keyboardAvoidingView, this.props.style ]}
+      >
+        <View
+          style={ styles.view }
+        >
+          <TextInput
+            placeholder='what is up L'
+            returnKeyType='next'
+          />
+        </View>
+      </KeyboardAvoidingView>
+    )
+  }
+}
+
+const Composer = Animated.createAnimatedComponent(UnanimatedComposer)
 
 const styles = StyleSheet.create({
   keyboardAvoidingView : {
