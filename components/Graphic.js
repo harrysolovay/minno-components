@@ -3,13 +3,23 @@ import { Touchable, Image } from 'components'
 import { Ionicons } from '@expo/vector-icons'
 import SearchIconImage from 'assets/images/search.png'
 
+const Icon = (props) => (
+  <props.type
+    style={ props.style }
+    name={ props.name }
+    color={ props.color || '#000' }
+    size={ props.size }
+  />
+)
+
 const GRAPHICS = {
 
+  // paddingTop : 4
   back : (props) => (
-    <Ionicons
+    <Icon
+      type={ Ionicons }
       name='ios-arrow-round-back'
       size={ 40 }
-      color='#000'
     />
   ),
 

@@ -11,31 +11,44 @@ class Header extends Component {
           style={ styles.bar }
           onPress={ this.props.onPress }
         >
-          <View
-            style={[ styles.barItem, styles.left ]}
-          >
-            {
-              this.props.left === 'back'
-                ? <Graphic name='back' onPress={ () => console.log('back button pressed') } />
-                : this.props.left
-            }
-          </View>
-          <View
-            style={[ styles.barItem, styles.center ]}
-          >
-            {
-              typeof this.props.center === 'string'
-                ? this.props.center === 'search'
-                  ? <Graphic name='search' onPress={ () => console.log('search button pressed') } />
-                  : <Text header>{ this.props.center }</Text>
-                : this.props.center
-            }
-          </View>
-          <View
-            style={[ styles.barItem, styles.right ]}
-          >
-            { this.props.right }
-          </View>
+
+          {
+            this.props.left &&
+              <View
+                style={[ styles.barItem, styles.barSideItem, styles.left ]}
+              >
+                {
+                  this.props.left === 'back'
+                    ? <Graphic name='back' onPress={ () => console.log('back button pressed') } />
+                    : this.props.left
+                }
+              </View>
+          }
+
+          {
+            this.props.center &&
+              <View
+                style={[ styles.barItem, styles.center ]}
+              >
+                {
+                  typeof this.props.center === 'string'
+                    ? this.props.center === 'search'
+                      ? <Graphic name='search' onPress={ () => console.log('search button pressed') } />
+                      : <Text header>{ this.props.center }</Text>
+                    : this.props.center
+                }
+              </View>
+          }
+
+          {
+            this.props.right &&
+              <View
+                style={[ styles.barItem, styles.barSideItem, styles.right ]}
+              >
+                { this.props.right }
+              </View>
+          }
+
         </Touchable>
       </Animated.View>
     )
@@ -43,6 +56,7 @@ class Header extends Component {
 }
 
 const styles = StyleSheet.create({
+
   container : {
     position : 'absolute',
     top : 0,
@@ -56,25 +70,35 @@ const styles = StyleSheet.create({
     flexDirection : 'column',
     justifyContent : 'flex-end'
   },
+
   bar : {
     height : 50,
     flexDirection : 'row'
   },
+
   barItem : {
-    flex : 1,
-    justifyContent : 'center'
+    justifyContent : 'center',
   },
+
+  barSideItem : {
+    width : 50
+  },
+
   left : {
     alignItems : 'flex-start',
-    marginLeft : 14
+    paddingLeft : 15
   },
+
   center : {
+    flexGrow : 1,
     alignItems : 'center'
   },
+
   right : {
     alignItems : 'flex-end',
-    marginRight : 14
+    paddingRight : 15
   }
+
 })
 
 export default Header

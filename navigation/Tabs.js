@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Header, TabBar, View, Composer, ActionSheet } from 'components'
-import { HEADER_HEIGHT, TAB_BAR_HEIGHT, SCREEN_WIDTH } from 'constants'
+import { Header, TabBar, View, Composer, Graphic, Touchable } from 'components'
+import { HEADER_HEIGHT, TAB_BAR_HEIGHT, SCREEN_WIDTH, NOTCH_HEIGHT} from 'constants'
 import { Posts, Capture, Account } from 'screens'
-import Carousel from 'react-native-snap-carousel'
-import { Animated } from 'react-native'
+import Carousel, { Pagination } from 'react-native-snap-carousel'
+import { Animated, StyleSheet } from 'react-native'
 
-const AnimatedCarousel = Animated.createAnimatedComponent(Carousel)
+// const AnimatedCarousel = Animated.createAnimatedComponent(Carousel)
 
 const INITIAL_TAB = 0
-
+const SCREENS = [ 'posts', 'capture', 'account' ]
 
 
 class Tabs extends Component {
@@ -16,7 +16,6 @@ class Tabs extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initialTab : INITIAL_TAB,
       activeTab : INITIAL_TAB,
       scrollX : new Animated.Value(INITIAL_TAB)
     }
@@ -43,14 +42,12 @@ class Tabs extends Component {
           onPress={ () => console.log('header pressed') }
         />
 
-        <AnimatedCarousel
-          ref={ ref => this.carousel = ref }
+        <Carousel
+          ref={ ref => this.carouselRef = ref }
           data={[ <Posts />, <Capture />, <Account /> ]}
           renderItem={ ({ item, i }) => item }
-          firstItem={ this.props.initialTab }
-          onScroll={ Animated.event([
-            { nativeEvent : { contentOffset : { x : this.state.scrollX } } }
-          ], { useNativeDriver : true }) }
+          firstItem={ INITIAL_TAB }
+          onScroll={ this._onScroll }
           onSnapToItem={ i => this.setState({ activeTab : i }) }
           sliderWidth={ SCREEN_WIDTH }
           itemWidth={ SCREEN_WIDTH }
@@ -63,23 +60,57 @@ class Tabs extends Component {
           style={{ transform : [{ translateY : composerTranslation }] }}
         />
 
-        <TabBar
-          activeTab={ this.state.activeTab }
-          goTo={ () => console.log('happened') }
-        />
+        <View
+          style={ styles.tabBar }
+        >
+          <Pagination
+            containerStyle={ styles.pagination }
+            renderDots={ activeIndex => (
+              SCREENS.map((screen, i) => (
+                <Graphic
+                  touchableStyle={{ flex : 1, alignItems : 'center' }}
+                  name={ screen }
+                  color={ i === activeIndex ? '#4a90e2' : '#000' }
+                  onPress={ () => console.log('pressed') }
+                  key={ i }
+                />
+              ))
+            )}
+            activeDotIndex={ this.state.activeTab }
+            dotsLength={ 3 }
+            tappableDots={ !!this.carouselRef }
+            carouselRef={ this.carouselRef }
+          />
+        </View>
 
       </View>
     )
 
   }
 
-  componentDidMount() {
-    console.log('happened')
-    console.log(this.carousel.snapToItem)
+  _onScroll = (e) => {
+    this.state.scrollX.setValue(e.nativeEvent.contentOffset.x)
   }
 
 }
 
-
+const styles = StyleSheet.create({
+  tabBar : {
+    position : 'absolute',
+    right : 0,
+    bottom : 0,
+    left : 0,
+    borderTopWidth : 1,
+    borderColor : '#ddd',
+    backgroundColor : '#fff',
+    paddingBottom : NOTCH_HEIGHT
+  },
+  pagination : {
+    flexDirection : 'row',
+    height : 50,
+    paddingTop : 0,
+    paddingBottom : 0
+  }
+})
 
 export default Tabs

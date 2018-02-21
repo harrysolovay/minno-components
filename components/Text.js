@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
   header : {
     fontFamily : 'FuturaLTBook',
     fontSize : 18,
-    lineHeight : 18,
-    color : '#000'
+    lineHeight : 19,
+    color : '#000',
+    marginTop : 7
   },
   title : {
     fontSize : 20,
