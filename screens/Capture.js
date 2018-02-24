@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { Text } from 'react-native'
-import { Screen } from 'components'
+import { View, Capture as CaptureComponent } from 'components'
 
 class Capture extends Component {
 
   render() {
     return (
-      <Screen hasTabBar>
-        <Text>Capture</Text>
-      </Screen>
+      <View screen hasTabBar>
+        <CaptureComponent />
+      </View>
     )
   }
 

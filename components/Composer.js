@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView, View, TextInput } from 'components'
+import { StyleSheet, Animated } from 'react-native'
 import { TAB_BAR_HEIGHT } from 'constants'
-import { Animated, StyleSheet } from 'react-native'
+import { KeyboardAvoidingView, View, TextField } from 'components'
 
 class UnanimatedComposer extends Component {
+
   render() {
     return (
       <KeyboardAvoidingView
@@ -12,14 +13,19 @@ class UnanimatedComposer extends Component {
         <View
           style={ styles.view }
         >
-          <TextInput
-            placeholder='what is up L'
+          <TextField
+            placeholder='write a post'
             returnKeyType='next'
+            rightText='post'
+            multiline={ true }
+            onContentSizeChange={ this.props.onSizeChange }
+            style={ styles.textField }
           />
         </View>
       </KeyboardAvoidingView>
     )
   }
+
 }
 
 const Composer = Animated.createAnimatedComponent(UnanimatedComposer)
@@ -28,7 +34,7 @@ const styles = StyleSheet.create({
   keyboardAvoidingView : {
     position : 'absolute',
     right : 0,
-    bottom : TAB_BAR_HEIGHT,
+    bottom : TAB_BAR_HEIGHT + 1,
     left : 0,
     backgroundColor : '#fff'
   },

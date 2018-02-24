@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { StyleSheet } from 'react-native'
-import { Touchable, Heading, View } from 'components'
+import { StyleSheet, View } from 'react-native'
+import { Touchable, Heading } from 'components'
 import { NOTCH_HEIGHT } from 'constants'
 import Modal from 'react-native-modalbox'
 
@@ -12,37 +12,29 @@ class ActionSheet extends Component {
   render() {
     return (
       <Modal
-        style={ styles.modal }
         isOpen={ this.props.viewStore.actionSheet.showing }
-        swipeToClose={ true }
-        backdropPressToClose={ true }
-        onClosed={ this.hide }
+        onClosed={ this._hide }
         position='bottom'
+        style={ styles.modal }
       >
         <Touchable
+          onPress={ this._hide }
           style={ styles.backdrop }
-          onPress={ this.hide }
         />
         <View
-          style={ styles.handle }
-        />
-        <View
-          style={ styles.innerView }
+          style={ styles.options }
         >
           {
             this.props.viewStore.actionSheet.options.map((option, i) => (
               <Touchable
                 onPress={ () => {
-                  this.hide()
+                  this._hide()
                   option.onPress()
                 }}
                 key={ i }
               >
                 <Heading
-                  left={ option.left }
-                  title={ option.title }
-                  subtitle={ option.subtitle }
-                  right={ option.right }
+                  { ...option }
                 />
               </Touchable>
             ))
@@ -52,7 +44,7 @@ class ActionSheet extends Component {
     )
   }
 
-  hide = () => {
+  _hide = () => {
     this.props.viewStore.actionSheet.showing = false
   }
 
@@ -69,14 +61,7 @@ const styles = StyleSheet.create({
     flex : 1,
     alignSelf : 'stretch',
   },
-  handle : {
-    width : 45,
-    height : 4,
-    borderRadius : 2,
-    backgroundColor : '#fff',
-    marginBottom : 8
-  },
-  innerView : {
+  options : {
     backgroundColor : '#fff',
     alignSelf : 'stretch',
     paddingTop : 15,

@@ -3,18 +3,18 @@ import { TextInput as ReactNativeTextInput, StyleSheet } from 'react-native'
 
 const TextInput = (props) => (
   <ReactNativeTextInput
+    { ...props }
     style={[
       styles.textInput,
       props.autoCapitalize ? styles.uppercase : styles.eitherCase,
+      props.multiline ? styles.multiline : styles.singleLine,
       props.style
     ]}
-    { ...props }
   />
 )
 
 const styles = StyleSheet.create({
   textInput : {
-    height : 50,
     alignSelf : 'stretch',
     color : '#000',
     paddingRight : 15,
@@ -31,6 +31,13 @@ const styles = StyleSheet.create({
     fontSize : 20,
     lineHeight : 20,
     paddingTop : 3.5
+  },
+  singleLine : {
+    height : 50
+  },
+  multiline : {
+    paddingTop : 16.5,
+    paddingBottom : 9
   }
 })
 

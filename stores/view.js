@@ -3,18 +3,18 @@ import { observable, action } from 'mobx'
 class ViewStore {
 
   @observable actionSheet = {
-    showing : false,
-    options : [ {
+    options : [{
       title : 'no options loaded',
       subtitle : 'this is a bug!',
       onPress : () => console.log('bug in action sheet')
-    } ]
+    }],
+    showing : false
   }
 
   @action showActionSheet(options) {
     this.actionSheet = {
-      showing : true,
-      options : options
+      options : options,
+      showing : true
     }
   }
 

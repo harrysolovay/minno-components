@@ -1,29 +1,39 @@
 import React, { Component } from 'react'
-import { Animated, View, StyleSheet } from 'react-native'
-import { Text, Touchable, TextInput, Graphic } from 'components'
+import { Animated, StyleSheet } from 'react-native'
+import { View, Text, Touchable, TextInput, Graphic } from 'components'
 import { HEADER_HEIGHT } from 'constants'
 
 class Header extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.left = props.left
+      ? typeof props.left === 'string'
+        ? <Graphic
+            icon={ props.left }
+            size={ 40 }
+          />
+        : props.left
+      : null
+
+  }
+
   render() {
     return (
-      <Animated.View style={[ styles.container, this.props.style ]}>
+      <Animated.View
+        style={[ styles.container, this.props.style ]}
+      >
         <Touchable
           style={ styles.bar }
           onPress={ this.props.onPress }
         >
 
-          {
-            this.props.left &&
-              <View
-                style={[ styles.barItem, styles.barSideItem, styles.left ]}
-              >
-                {
-                  this.props.left === 'back'
-                    ? <Graphic name='back' onPress={ () => console.log('back button pressed') } />
-                    : this.props.left
-                }
-              </View>
-          }
+          <View
+            style={[ styles.barItem, styles.barSideItem, styles.left ]}
+          >
+            { this.left }
+          </View>
 
           {
             this.props.center &&
@@ -33,21 +43,26 @@ class Header extends Component {
                 {
                   typeof this.props.center === 'string'
                     ? this.props.center === 'search'
-                      ? <Graphic name='search' onPress={ () => console.log('search button pressed') } />
+                      ? <Graphic
+                          image='search'
+                          style={{
+                            width : 20
+                          }}
+                        />
                       : <Text header>{ this.props.center }</Text>
                     : this.props.center
                 }
               </View>
           }
 
-          {
-            this.props.right &&
-              <View
-                style={[ styles.barItem, styles.barSideItem, styles.right ]}
-              >
-                { this.props.right }
-              </View>
-          }
+          <View
+            style={[ styles.barItem, styles.barSideItem, styles.right ]}
+          >
+            {
+              this.props.right &&
+                this.props.right
+            }
+          </View>
 
         </Touchable>
       </Animated.View>

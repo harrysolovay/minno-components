@@ -1,14 +1,36 @@
 import React, { Component } from 'react'
-import { Screen, View, Heading, ActionSheet, ActionSheetTrigger, FlatList } from 'components'
+import { View, FlatList, Heading, ActionSheetTrigger } from 'components'
+import { TAB_BAR_HEIGHT } from 'constants'
 
 class Posts extends Component {
 
+  constructor(props) {
+    super(props)
+    console.log(props.composerHeight)
+  }
+
   render() {
     return (
-      <Screen hasHeader hasBothBars>
+      <View screen hasHeader
+        style={{ paddingBottom : TAB_BAR_HEIGHT + this.props.composerHeight }}
+      >
         <FlatList
           showsVerticalScrollIndicator={ false }
           data={[
+            { title : 'title', subtitle : 'subtitle', right : <ActionSheetTrigger options={[ { title : 'options one', subtitle : 'option subtitle' }, { title : 'options two', subtitle : 'option subtitle' } ]} /> },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
+            { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },
@@ -39,7 +61,7 @@ class Posts extends Component {
           )}
           keyExtractor={ (item, index) => index }
         />
-      </Screen>
+      </View>
     )
   }
 

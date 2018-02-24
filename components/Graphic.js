@@ -1,83 +1,96 @@
 import React from 'react'
-import { Touchable, Image } from 'components'
+import { Image as ReactNativeImage } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import SearchIconImage from 'assets/images/search.png'
+import { Touchable } from 'components'
 
-const Icon = (props) => (
-  <props.type
-    style={ props.style }
-    name={ props.name }
-    color={ props.color || '#000' }
-    size={ props.size }
+import SearchImage from 'assets/images/search.png'
+
+const IMAGES = {
+  search : SearchImage
+}
+
+const Image = (props) => (
+  <ReactNativeImage
+    { ...props }
+    source={ IMAGES[props.image] }
+    resizeMode='contain'
   />
 )
 
-const GRAPHICS = {
+ICON_TYPES = {
+  'Ionicons' : Ionicons
+}
 
-  // paddingTop : 4
-  back : (props) => (
-    <Icon
-      type={ Ionicons }
-      name='ios-arrow-round-back'
-      size={ 40 }
-    />
-  ),
+const ICONS = {
+  back : {
+    type : 'Ionicons',
+    name : 'ios-arrow-round-back'
+  },
+  more : {
+    type : 'Ionicons',
+    name : 'ios-more-outline'
+  },
+  posts : {
+    type : 'Ionicons',
+    name : 'ios-disc-outline'
+  },
+  capture : {
+    type : 'Ionicons',
+    name : 'ios-aperture-outline'
+  },
+  account : {
+    type : 'Ionicons',
+    name : 'ios-contact-outline'
+  },
+  flashOn : {
+    type : 'Ionicons',
+    name : 'ios-flash'
+  },
+  flashOff : {
+    type : 'Ionicons',
+    name : 'ios-flash-outline'
+  },
+  flipCamera : {
+    type : 'Ionicons',
+    name : 'ios-refresh'
+  }
+}
 
-  search : () => (
-    <Image
-      style={{
-        width : 20,
-        height : 20
-      }}
-      source={ SearchIconImage }
-    />
-  ),
-
-  showActions : (props) => (
-    <Ionicons
-      name='ios-more-outline'
-      size={ 30 }
-      color='#000'
-    />
-  ),
-
-  posts : (props) => (
-    <Ionicons
-      name='ios-disc-outline'
-      size={ 30 }
-      color={ props.color }
-    />
-  ),
-
-  capture : (props) => (
-    <Ionicons
-      name='ios-aperture-outline'
-      size={ 30 }
-      color='#000'
-      color={ props.color }
-    />
-  ),
-
-  account : (props) => (
-    <Ionicons
-      name='ios-contact-outline'
-      size={ 30 }
-      color='#000'
-      color={ props.color }
-    />
-  )
-
+const Icon = (props) => {
+  const Type = ICON_TYPES[ICONS[props.icon].type]
+  return <Type
+    { ...props }
+    name={ ICONS[props.icon].name }
+    color={ props.color || '#000' }
+  />
 }
 
 const Graphic = (props) => {
+
+  let theGraphic
+
+  if(props.icon)
+    theGraphic = (
+      <Icon
+        { ...props }
+      />
+    )
+
+  if(props.image)
+    theGraphic = (
+      <Image
+        { ...props }
+      />
+    )
+
   return props.onPress
     ? <Touchable
         style={ props.touchableStyle }
         onPress={ props.onPress }
       >
-        { GRAPHICS[props.name](props) }
+        { theGraphic }
       </Touchable>
-    : GRAPHICS[props.name](props)
+    : theGraphic
 }
 
 export default Graphic

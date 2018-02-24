@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, ScrollView } from 'react-native'
-import { SCREEN_WIDTH, SCREEN_HEIGHT, HEADER_HEIGHT, TAB_BAR_HEIGHT, FOOTER_HEIGHT } from 'constants'
+import { HEADER_HEIGHT, TAB_BAR_HEIGHT, FOOTER_HEIGHT } from 'constants'
 
 class Screen extends Component {
 
   styles = [
-    { width : SCREEN_WIDTH, height : SCREEN_HEIGHT },
+    { flex : 1 },
     this.props.hasHeader ? { paddingTop : HEADER_HEIGHT } : null,
     this.props.hasTabBar ? { paddingBottom : TAB_BAR_HEIGHT } : null,
     this.props.hasBothBars ? { paddingBottom : FOOTER_HEIGHT } : null,
@@ -15,6 +15,7 @@ class Screen extends Component {
   render() {
     return (
       <View
+        flex
         style={ this.styles }
         { ...this.props }
       />

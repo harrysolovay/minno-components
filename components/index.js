@@ -2,12 +2,12 @@ import View from './View'
 import FlatList from './FlatList'
 
 import Text from './Text'
-import Image from './Image'
 import Graphic from './Graphic'
 
 import Touchable from './Touchable'
 import Button from './Button'
 import TextInput from './TextInput'
+import TextField from './TextField'
 
 import Loading from './Loading'
 import Screen from './Screen'
@@ -16,24 +16,27 @@ import KeyboardAvoidingView from './KeyboardAvoidingView'
 
 import ActionSheet, { ActionSheetTrigger } from './ActionSheet'
 
-import Heading, { HeadingGroup, HeadingGroups } from './Heading'
+import Heading, { HeadingGroup } from './Heading'
+
 import Header from './Header'
 
-
-import TabBar from './TabBar'
 import Composer from './Composer'
+
+import Capture from './Capture'
 
 
 export {
 
-  View, Image,
+  View,
   FlatList,
 
   Text,
+  Graphic,
+
   Touchable,
   Button,
-  Graphic,
   TextInput,
+  TextField,
 
   Loading,
   Screen,
@@ -42,11 +45,12 @@ export {
 
   ActionSheet, ActionSheetTrigger,
 
+  Heading, HeadingGroup,
+
   Header,
 
-  Heading, HeadingGroup, HeadingGroups,
+  Composer,
 
-  TabBar,
-  Composer
+  Capture
 
 }

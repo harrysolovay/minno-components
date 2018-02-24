@@ -8,7 +8,8 @@ class ActionSheetTrigger extends Component {
   render() {
     return (
       <Graphic
-        name='showActions'
+        icon='more'
+        size={ 30 }
         onPress={ () => {
           this.props.viewStore.showActionSheet(
             this.props.options

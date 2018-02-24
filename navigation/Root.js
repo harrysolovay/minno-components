@@ -9,7 +9,7 @@ class Root extends Component {
   render() {
     return (
       <View style={{ flex : 1 }}>
-        <Tabs />
+        <Tabs initialTab={ 0 } />
         <ActionSheet />
       </View>
     )

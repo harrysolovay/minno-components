@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { View, Text } from 'components'
 
 const Group = (props) => (
-  ( props.title || props.subtitle )
+  props.title || props.subtitle
     ? <View
         style={[
           props.style,
