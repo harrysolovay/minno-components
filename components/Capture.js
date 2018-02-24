@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { View, Text, Touchable, Graphic } from 'components'
 import { STATUS_BAR_HEIGHT } from 'constants'
-import { StyleSheet, Linking, Alert } from 'react-native'
+import { StyleSheet, Linking, Alert, CameraRoll } from 'react-native'
 import { Camera, Permissions } from 'expo'
 
 class Capture extends Component {
 
   state = {
-    permissionsGranted : false,
+    saveToCameraRoll : true,
     flashMode : Camera.Constants.FlashMode.off,
     type : Camera.Constants.Type.back
   }
 
   render() {
-    return this.permissionsGranted
+    return this.state.permissionsGranted
       ? (
         <Camera
           ref={ ref => this.camera = ref }
@@ -62,7 +62,7 @@ class Capture extends Component {
             To use this feature, please...
           </Text>
           <Text
-            onPress={ this._askForCameraPermissions }
+            onPress={ this._showPermissionsAlert }
             action
             style={ styles.permission }
           >
@@ -72,30 +72,22 @@ class Capture extends Component {
       )
   }
 
-  _askForPermission = async(permission) => {
-    try {
-      let { status } = await Permissions.getAsync(permission)
-      if(status === 'denied' || status === 'undetermined') {
-        status = await Permissions.askAsync(permission)
-      }
-      if(status !== 'granted')
-        return true
-    } catch(error) {
-      alert(error.message)
-    }
+
+
+  _permissionsGranted = async() => {
+    const permissions = await Promise.all([
+      Permissions.askAsync(Permissions.CAMERA),
+      Permissions.askAsync(Permissions.AUDIO_RECORDING)
+    ])
+    return(
+      permissions[0].status === 'granted' &&
+      permissions[1].status === 'granted'
+    )
   }
 
-  _askForCameraPermission = () => {
-    return this._askForPermission(Permissions.CAMERA)
-  }
-
-  _askForAudioRecordingPermission = () => {
-    return this._askForPermission(Permissions.AUDIO_RECORDING)
-  }
-
-  _alertPermissionsNeeded = () => {
+  _showPermissionsAlert = () => {
     Alert.alert(
-      'Want to use the camera?',
+      'Wanna use the camera?',
       'if so, open settings and enable camera and audio recording',
       [
         { text : 'Not Now' },
@@ -104,26 +96,18 @@ class Capture extends Component {
     )
   }
 
-  _askForPermissions = () => {
-    if(
-      this._askForCameraPermission() &&
-      this._askForAudioRecordingPermission()
-    ) {
-      this.setState({ permissionsGranted : true })
-    } else {
-      this._alertPermissionsNeeded()
-    }
+  _askForPermissions = async() => {
+    const granted = await this._permissionsGranted()
+    this.setState({ permissionsGranted : granted })
+    if(!granted)
+      this._showPermissionsAlert()
   }
 
-  async componentWillMount() {
+  componentDidMount() {
     this._askForPermissions()
   }
 
-  _takePicture = async() => {
-    if(this.camera) {
-      let pic = await this.camera.takePictureAsync({ base64 : true })
-    }
-  }
+
 
   _toggle = (stateKey, a, b) => {
     this.setState({
@@ -137,6 +121,18 @@ class Capture extends Component {
 
   _toggleType = () => {
     this._toggle('type', Camera.Constants.Type.back, Camera.Constants.Type.front)
+  }
+
+
+
+  _takePicture = async() => {
+    if(this.camera) {
+      let pic = await this.camera.takePictureAsync()
+      if(this.state.saveToCameraRoll) {
+        let savedTo = await CameraRoll.saveToCameraRoll(pic.uri, 'photo')
+        alert(String('uri ' + savedTo))
+      }
+    }
   }
 
 }
