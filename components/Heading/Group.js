@@ -1,41 +1,46 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import { View, Text } from 'components'
+import { StyleSheet } from 'react-native'
 
 const Group = (props) => (
-  props.title || props.subtitle
-    ? <View
-        style={[
-          props.style,
-          styles.view,
-          props.precedent ? styles.precedent : null,
-          props.center ? styles.center : null
-        ]}>
-        {
-          props.title &&
-            <Text heading title>{ props.title }</Text>
-        }
-        {
-          props.subtitle &&
-            <Text heading subtitle>{ props.subtitle }</Text>
-        }
-      </View>
-    : null
+  <View
+    style={[
+      styles.view,
+      props.center ? styles.center : null,
+      props.precedent ? styles.precedent : null,
+      props.style,
+    ]}
+  >
+    {
+      props.title &&
+        <Text heading title
+          onPress={ props.onTitlePress }
+        >
+          { props.title }
+        </Text>
+    }
+    {
+      props.subtitle &&
+        <Text heading subtitle
+          onPress={ props.onSubtitlePress }
+        >
+          { props.subtitle }
+        </Text>
+    }
+  </View>
 )
 
 const styles = StyleSheet.create({
   view : {
-    borderColor : '#ddd',
     paddingTop : 12,
     paddingBottom : 6,
-    paddingLeft : 12
   },
   precedent : {
     paddingRight : 14,
+    borderColor : '#ddd',
     borderRightWidth : 1
   },
   center : {
-    paddingLeft : 0,
     alignItems : 'center'
   }
 })

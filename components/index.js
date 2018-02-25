@@ -2,6 +2,7 @@ import View from './View'
 import FlatList from './FlatList'
 
 import Text from './Text'
+import Image from './Image'
 import Graphic from './Graphic'
 
 import Touchable from './Touchable'
@@ -9,10 +10,10 @@ import Button from './Button'
 import TextInput from './TextInput'
 import TextField from './TextField'
 
-import Loading from './Loading'
-import Screen from './Screen'
-import Center from './Center'
 import KeyboardAvoidingView from './KeyboardAvoidingView'
+
+import Loading from './Loading'
+import ProgressBar from './ProgressBar'
 
 import ActionSheet, { ActionSheetTrigger } from './ActionSheet'
 
@@ -24,6 +25,10 @@ import Composer from './Composer'
 
 import Capture from './Capture'
 
+import Story from './Story'
+
+import { StyleSheet } from 'react-native'
+
 
 export {
 
@@ -32,16 +37,17 @@ export {
 
   Text,
   Graphic,
+  Image,
 
   Touchable,
   Button,
   TextInput,
   TextField,
 
-  Loading,
-  Screen,
-  Center,
   KeyboardAvoidingView,
+
+  Loading,
+  ProgressBar,
 
   ActionSheet, ActionSheetTrigger,
 
@@ -51,6 +57,10 @@ export {
 
   Composer,
 
-  Capture
+  Capture,
+
+  Story,
+
+  StyleSheet
 
 }

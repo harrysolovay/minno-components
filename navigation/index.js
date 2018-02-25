@@ -1,11 +1,11 @@
 import Navigator from './Navigator'
 import Root from './Root'
 import Tabs from './Tabs'
-import Playground from './Playground'
+import Sandbox from './Sandbox'
 
 export {
   Navigator,
   Root,
   Tabs,
-  Playground
+  Sandbox
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Animated, StyleSheet, Keyboard } from 'react-native'
 import { Posts, Capture, Account } from 'screens'
-import { View, Header, Composer, Graphic } from 'components'
+import { View, Header, Composer, Touchable, Graphic } from 'components'
 import { HEADER_HEIGHT, TAB_BAR_HEIGHT, SCREEN_WIDTH, NOTCH_HEIGHT} from 'constants'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 
@@ -17,13 +17,13 @@ class Tabs extends Component {
   render() {
 
     let headerTranslation = this.state.scrollX.interpolate({
-      inputRange : [ 0, SCREEN_WIDTH, SCREEN_WIDTH * 2 ],
-      outputRange : [ 0, -HEADER_HEIGHT, 0 ]
+      inputRange : [ -SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_WIDTH * 2, SCREEN_WIDTH * 3 ],
+      outputRange : [ 0, 0, -HEADER_HEIGHT, 0, 0 ]
     })
 
     let composerTranslation = this.state.scrollX.interpolate({
-      inputRange : [ 0, SCREEN_WIDTH, SCREEN_WIDTH * 2 ],
-      outputRange : [ 0, this.state.composerHeight, this.state.composerHeight ]
+      inputRange : [ -SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_WIDTH * 2 ],
+      outputRange : [ 0, 0, this.state.composerHeight, this.state.composerHeight ]
     })
 
     return (
@@ -50,6 +50,7 @@ class Tabs extends Component {
           slideStyle={{ width : SCREEN_WIDTH }}
           inactiveSlideOpacity={ 1 }
           inactiveSlideScale={ 1 }
+          useScrollView={ true }
         />
 
         <Composer
@@ -64,9 +65,12 @@ class Tabs extends Component {
             containerStyle={ styles.tabsContainer }
             renderDots={ activeIndex => (
               [ 'posts', 'capture', 'account' ].map((iconName, i) => (
-                <View
-                  key={ i }
+                <Touchable
+                  onPress={ () => {
+                    this.carouselRef._snapToItem(this.carouselRef._getPositionIndex(i))
+                  }}
                   style={ styles.tab }
+                  key={ i }
                 >
                   <Graphic
                     icon={ iconName }
@@ -74,7 +78,7 @@ class Tabs extends Component {
                     color={ i === activeIndex ? '#5990dc' : '#000' }
                     style={ styles.tabIcon }
                   />
-                </View>
+                </Touchable>
               ))
             )}
             activeDotIndex={ this.state.activeTab }

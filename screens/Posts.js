@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, FlatList, Heading, ActionSheetTrigger } from 'components'
+import { View, Story, FlatList, Heading, ActionSheetTrigger } from 'components'
 import { TAB_BAR_HEIGHT } from 'constants'
 
 class Posts extends Component {
@@ -17,6 +17,7 @@ class Posts extends Component {
           showsVerticalScrollIndicator={ false }
           data={[
             { title : 'title', subtitle : 'subtitle', right : <ActionSheetTrigger options={[ { title : 'options one', subtitle : 'option subtitle' }, { title : 'options two', subtitle : 'option subtitle' } ]} /> },
+            { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },
             { title : 'title', subtitle : 'subtitle' },

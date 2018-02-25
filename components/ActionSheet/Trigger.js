@@ -15,6 +15,7 @@ class ActionSheetTrigger extends Component {
             this.props.options
           )
         }}
+        style={{ marginTop : 2 }}
       />
     )
   }

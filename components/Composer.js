@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Animated } from 'react-native'
-import { TAB_BAR_HEIGHT } from 'constants'
+import { SCREEN_HEIGHT, HEADER_HEIGHT, TAB_BAR_HEIGHT } from 'constants'
 import { KeyboardAvoidingView, View, TextField } from 'components'
 
 class UnanimatedComposer extends Component {
@@ -18,6 +18,7 @@ class UnanimatedComposer extends Component {
             returnKeyType='next'
             rightText='post'
             multiline={ true }
+            maxLength={ 250 }
             onContentSizeChange={ this.props.onSizeChange }
             style={ styles.textField }
           />

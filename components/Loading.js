@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { Image, Animated, Easing, StyleSheet } from 'react-native'
-import { Center, HeadingGroup } from 'components'
-import { EvilIcons } from '@expo/vector-icons'
-
-const AnimatedIcon = Animated.createAnimatedComponent(EvilIcons)
+import { Animated, Easing, StyleSheet } from 'react-native'
+import { View, Graphic, HeadingGroup } from 'components'
 
 class Loading extends Component {
 
@@ -20,20 +17,19 @@ class Loading extends Component {
     })
 
     return (
-      <Center>
+      <View centerChildren>
         {
           this.props.image &&
-            <Image
+            <Graphic
               style={ styles.image }
-              source={ this.props.image }
-              resizeMode='contain'
+              image={ this.props.image }
             />
         }
-        <AnimatedIcon
-          style={[ styles.spinner, { transform : [{ rotate : spin }] } ]}
-          name='spinner-3'
+        <Graphic animated
+          icon='spinner'
           size={ 40 }
           color='#5990dc'
+          style={[ styles.spinner, { transform : [{ rotate : spin }] } ]}
         />
         {
           ( this.props.title || this.props.subtitle ) &&
@@ -43,7 +39,7 @@ class Loading extends Component {
               subtitle={ this.props.subtitle }
             />
         }
-      </Center>
+      </View>
     )
 
   }

@@ -46,7 +46,8 @@ class Header extends Component {
                       ? <Graphic
                           image='search'
                           style={{
-                            width : 20
+                            width : 20,
+                            height : 20
                           }}
                         />
                       : <Text header>{ this.props.center }</Text>

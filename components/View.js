@@ -1,22 +1,33 @@
 import React from 'react'
-import { View as ReactNativeView, StyleSheet} from 'react-native'
-import { SCREEN_WIDTH, SCREEN_HEIGHT, HEADER_HEIGHT, TAB_BAR_HEIGHT, FOOTER_HEIGHT } from 'constants'
+import { View as ReactNativeView } from 'react-native'
+import {
+  HEADER_HEIGHT,
+  TAB_BAR_HEIGHT
+} from 'constants'
 
 const View = (props) => {
 
   const styles = [
-    props.screen ? { width : SCREEN_WIDTH, height : SCREEN_HEIGHT } : null,
+
+    props.screen ? { flex : 1 } : null,
     props.hasHeader ? { paddingTop : HEADER_HEIGHT } : null,
     props.hasTabBar ? { paddingBottom : TAB_BAR_HEIGHT } : null,
-    props.center ? { alignItems : 'center', justifyContent : 'center' } : null,
+
+    props.centerChildren ? { flex : 1, alignItems : 'center', justifyContent : 'center' } : null,
+    props.verticallyCenterChildren ? { flex : 1, justifyContent : 'center' } : null,
+    props.horizontallyCenterChildren ? { flex : 1, alignItems : 'center' } : null,
+
     props.style
+
   ]
 
   return (
+
     <ReactNativeView
       { ...props }
       style={ styles }
     />
+
   )
 
 }

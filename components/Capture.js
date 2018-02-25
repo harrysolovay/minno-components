@@ -129,8 +129,8 @@ class Capture extends Component {
     if(this.camera) {
       let pic = await this.camera.takePictureAsync()
       if(this.state.saveToCameraRoll) {
-        let savedTo = await CameraRoll.saveToCameraRoll(pic.uri, 'photo')
-        alert(String('uri ' + savedTo))
+        // let savedTo = await CameraRoll.saveToCameraRoll(pic.uri, 'photo')
+        // alert(String('uri ' + savedTo))
       }
     }
   }

@@ -1,27 +1,26 @@
 import React from 'react'
-import { Image as ReactNativeImage } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-import { Touchable } from 'components'
+import { Animated } from 'react-native'
+import { EvilIcons, Ionicons } from '@expo/vector-icons'
+import { Image, Touchable } from 'components'
 
-import SearchImage from 'assets/images/search.png'
+import logoImage from 'assets/images/logo.png'
+import searchImage from 'assets/images/search.png'
 
 const IMAGES = {
-  search : SearchImage
+  logo : logoImage,
+  search : searchImage
 }
 
-const Image = (props) => (
-  <ReactNativeImage
-    { ...props }
-    source={ IMAGES[props.image] }
-    resizeMode='contain'
-  />
-)
-
-ICON_TYPES = {
+const ICON_TYPES = {
+  'EvilIcons' : EvilIcons,
   'Ionicons' : Ionicons
 }
 
 const ICONS = {
+  spinner : {
+    type : 'EvilIcons',
+    name : 'spinner-3'
+  },
   back : {
     type : 'Ionicons',
     name : 'ios-arrow-round-back'
@@ -57,7 +56,9 @@ const ICONS = {
 }
 
 const Icon = (props) => {
-  const Type = ICON_TYPES[ICONS[props.icon].type]
+  let Type = ICON_TYPES[ICONS[props.icon].type]
+  if(props.animated)
+    Type = Animated.createAnimatedComponent(Type)
   return <Type
     { ...props }
     name={ ICONS[props.icon].name }
@@ -69,19 +70,23 @@ const Graphic = (props) => {
 
   let theGraphic
 
-  if(props.icon)
+  if(props.icon) {
     theGraphic = (
       <Icon
         { ...props }
       />
     )
+  }
 
-  if(props.image)
+  if(props.image) {
+    let Type = props.animated ? Animated.Image : Image
     theGraphic = (
-      <Image
+      <Type
         { ...props }
+        source={ IMAGES[props.image] }
       />
     )
+  }
 
   return props.onPress
     ? <Touchable

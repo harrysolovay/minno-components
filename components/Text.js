@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     fontFamily : 'FuturaLTBook',
     fontSize : 18,
     lineHeight : 19,
-    color : '#000',
     marginTop : 7
   },
   title : {
@@ -38,7 +37,8 @@ const styles = StyleSheet.create({
   },
   subtitle : {
     fontSize : 16,
-    lineHeight : 16
+    lineHeight : 16,
+    color : '#90949c'
   },
   right : {
     fontSize : 16,

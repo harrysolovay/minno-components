@@ -5,22 +5,21 @@ import { LinearGradient } from 'expo'
 
 class Heading extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      paddingRight : 12
-    }
+  state = {
+    paddingRight : 14
   }
 
   render() {
     return (
-      <View style={[ styles.view, this.props.style ]}>
+      <View style={[ styles.container, this.props.style ]}>
+
         {
           this.props.left &&
             <View style={ styles.left }>
               { this.props.left }
             </View>
         }
+
         {
           this.props.groups
             ? <FlatList
@@ -33,6 +32,7 @@ class Heading extends Component {
                   return (
                     <HeadingGroup
                       { ...item }
+                      style={{ marginRight : 14 }}
                     />
                   )
                 }}
@@ -41,8 +41,10 @@ class Heading extends Component {
             : <HeadingGroup
                 title={ this.props.title }
                 subtitle={ this.props.subtitle }
+                style={{ paddingLeft : 14 }}
               />
         }
+
         {
           this.props.right &&
             <Right
@@ -52,14 +54,14 @@ class Heading extends Component {
               { this.props.right }
             </Right>
         }
+
       </View>
     )
   }
 
   setPaddingRight = (width) => {
     if(this.props.groups) {
-      const PADDING_RIGHT = width + 12
-      this.setState({ paddingRight : PADDING_RIGHT })
+      this.setState({ paddingRight : width })
     }
     return false
   }
@@ -90,13 +92,14 @@ class Right extends Component {
 }
 
 const styles = StyleSheet.create({
-  view : {
+  container : {
     flexDirection : 'row',
     alignSelf : 'stretch'
   },
   scrollView : {
     flexDirection : 'row',
-    justifyContent : 'flex-start'
+    justifyContent : 'flex-start',
+    paddingLeft : 14
   },
   left : {
     flexDirection : 'column',

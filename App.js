@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { AppLoading, Font } from 'expo'
 import { Loading } from 'components'
-import Logo from 'assets/images/logo.png'
 import { Provider } from 'mobx-react'
 import stores from 'stores'
 import { Navigator } from 'navigation'
@@ -25,7 +24,7 @@ class App extends Component {
         />
       : ! this.state.sessionLoaded
         ? <Loading
-            image={ Logo }
+            image='logo'
             title='loading'
             subtitle='just a sec'
           />
