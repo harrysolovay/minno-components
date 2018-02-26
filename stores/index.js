@@ -1,5 +1,5 @@
-import viewStore from './view'
+import ActionSheetStore from './ActionSheet'
 
 export default {
-  viewStore
+  actionSheetStore : new ActionSheetStore()
 }

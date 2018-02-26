@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Animated, StyleSheet } from 'react-native'
-import { View, Text, Touchable, TextInput, Graphic } from 'components'
+import { View, Text, TextInput, Graphic } from 'components'
 import { HEADER_HEIGHT } from 'constants'
 
 class Header extends Component {
@@ -24,7 +24,7 @@ class Header extends Component {
       <Animated.View
         style={[ styles.container, this.props.style ]}
       >
-        <Touchable
+        <View
           style={ styles.bar }
           onPress={ this.props.onPress }
         >
@@ -65,7 +65,7 @@ class Header extends Component {
             }
           </View>
 
-        </Touchable>
+        </View>
       </Animated.View>
     )
   }

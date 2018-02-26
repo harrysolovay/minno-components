@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated } from 'react-native'
 import { EvilIcons, Ionicons } from '@expo/vector-icons'
-import { Image, Touchable } from 'components'
+import { Image, View } from 'components'
 
 import logoImage from 'assets/images/logo.png'
 import searchImage from 'assets/images/search.png'
@@ -20,6 +20,10 @@ const ICONS = {
   spinner : {
     type : 'EvilIcons',
     name : 'spinner-3'
+  },
+  rightArrow : {
+    type : 'EvilIcons',
+    name : 'chevron-right'
   },
   back : {
     type : 'Ionicons',
@@ -89,12 +93,12 @@ const Graphic = (props) => {
   }
 
   return props.onPress
-    ? <Touchable
+    ? <View
         style={ props.touchableStyle }
         onPress={ props.onPress }
       >
         { theGraphic }
-      </Touchable>
+      </View>
     : theGraphic
 }
 

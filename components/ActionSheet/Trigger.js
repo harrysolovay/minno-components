@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { Graphic } from 'components'
 
-@inject('viewStore')
+@inject('actionSheetStore')
 @observer
 class ActionSheetTrigger extends Component {
   render() {
@@ -11,11 +11,14 @@ class ActionSheetTrigger extends Component {
         icon='more'
         size={ 30 }
         onPress={ () => {
-          this.props.viewStore.showActionSheet(
+          this.props.actionSheetStore.show(
             this.props.options
           )
         }}
-        style={{ marginTop : 2 }}
+        style={{
+          marginTop : 2,
+          marginRight : 15
+        }}
       />
     )
   }

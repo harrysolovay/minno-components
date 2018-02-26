@@ -13,19 +13,19 @@ const Group = (props) => (
   >
     {
       props.title &&
-        <Text heading title
+        <Text
+          text={ props.title }
+          style={ styles.title }
           onPress={ props.onTitlePress }
-        >
-          { props.title }
-        </Text>
+        />
     }
     {
       props.subtitle &&
-        <Text heading subtitle
+        <Text
+          text={ props.subtitle }
+          style={ styles.subtitle }
           onPress={ props.onSubtitlePress }
-        >
-          { props.subtitle }
-        </Text>
+        />
     }
   </View>
 )
@@ -42,6 +42,15 @@ const styles = StyleSheet.create({
   },
   center : {
     alignItems : 'center'
+  },
+  title : {
+    fontSize : 20,
+    lineHeight : 20
+  },
+  subtitle : {
+    fontSize : 16,
+    lineHeight : 16,
+    color : '#90949c'
   }
 })
 

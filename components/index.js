@@ -5,8 +5,7 @@ import Text from './Text'
 import Image from './Image'
 import Graphic from './Graphic'
 
-import Touchable from './Touchable'
-import Button from './Button'
+import Cell from './Cell'
 import TextInput from './TextInput'
 import TextField from './TextField'
 
@@ -17,7 +16,7 @@ import ProgressBar from './ProgressBar'
 
 import ActionSheet, { ActionSheetTrigger } from './ActionSheet'
 
-import Heading, { HeadingGroup } from './Heading'
+import Heading, { HeadingGroup, HeadingGroups } from './Heading'
 
 import Header from './Header'
 
@@ -39,8 +38,7 @@ export {
   Graphic,
   Image,
 
-  Touchable,
-  Button,
+  Cell,
   TextInput,
   TextField,
 
@@ -51,7 +49,7 @@ export {
 
   ActionSheet, ActionSheetTrigger,
 
-  Heading, HeadingGroup,
+  Heading, HeadingGroup, HeadingGroups,
 
   Header,
 

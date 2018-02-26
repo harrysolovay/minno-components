@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { StyleSheet, View } from 'react-native'
-import { Touchable, Heading } from 'components'
-import { NOTCH_HEIGHT } from 'constants'
 import Modal from 'react-native-modalbox'
+import { View, Heading } from 'components'
+import { StyleSheet } from 'react-native'
+import { NOTCH_HEIGHT } from 'constants'
 
-@inject('viewStore')
-@observer
+@inject('actionSheetStore') @observer
 class ActionSheet extends Component {
 
   render() {
     return (
       <Modal
-        isOpen={ this.props.viewStore.actionSheet.showing }
+        isOpen={ this.props.actionSheetStore.showing }
         onClosed={ this._hide }
         position='bottom'
         style={ styles.modal }
       >
-        <Touchable
+        <View
           onPress={ this._hide }
           style={ styles.backdrop }
         />
@@ -25,18 +24,15 @@ class ActionSheet extends Component {
           style={ styles.options }
         >
           {
-            this.props.viewStore.actionSheet.options.map((option, i) => (
-              <Touchable
+            this.props.actionSheetStore.options.map((option, i) => (
+              <Heading
+                { ...option }
                 onPress={ () => {
                   this._hide()
                   option.onPress()
                 }}
                 key={ i }
-              >
-                <Heading
-                  { ...option }
-                />
-              </Touchable>
+              />
             ))
           }
         </View>
@@ -45,7 +41,7 @@ class ActionSheet extends Component {
   }
 
   _hide = () => {
-    this.props.viewStore.actionSheet.showing = false
+    this.props.actionSheetStore.showing = false
   }
 
 }
@@ -53,19 +49,19 @@ class ActionSheet extends Component {
 const styles = StyleSheet.create({
   modal : {
     flexDirection : 'column',
+    alignItems : 'center',
     justifyContent : 'flex-end',
-    backgroundColor : 'transparent',
-    alignItems : 'center'
+    backgroundColor : 'transparent'
   },
   backdrop : {
     flex : 1,
-    alignSelf : 'stretch',
+    alignSelf : 'stretch'
   },
   options : {
-    backgroundColor : '#fff',
     alignSelf : 'stretch',
     paddingTop : 15,
-    paddingBottom : 15 + NOTCH_HEIGHT
+    paddingBottom : 15 + NOTCH_HEIGHT,
+    backgroundColor : '#fff'
   }
 })
 

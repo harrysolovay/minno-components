@@ -5,52 +5,41 @@ const Text = (props) => (
   <ReactNativeText
     { ...props }
     style={[
+
       styles.text,
-      props.header ? styles.header : null,
-      props.heading ? styles.heading : null,
-      props.title ? styles.title : null,
-      props.subtitle ? styles.subtitle : null,
-      props.right ? styles.right : null,
+
+      props.fillContainer ? styles.fillContainer : null,
+
       props.action ? styles.action : null,
       props.notice ? styles.notice : null,
+
       props.style
+
     ]}
-  />
+  >
+    { props.text || props.children }
+  </ReactNativeText>
 )
 
 const styles = StyleSheet.create({
+
   text : {
     fontFamily : 'HelveticaNeueLight',
-    color : '#000',
     fontSize : 20,
-    lineHeight : 20
+    lineHeight : 20,
+    color : '#000'
   },
-  header : {
-    fontFamily : 'FuturaLTBook',
-    fontSize : 18,
-    lineHeight : 19,
-    marginTop : 7
+
+  fillContainer : {
+    paddingTop : 16,
+    paddingRight : 15,
+    paddingBottom : 10,
+    paddingLeft : 15
   },
-  title : {
-    fontSize : 20,
-    lineHeight : 20
-  },
-  subtitle : {
-    fontSize : 16,
-    lineHeight : 16,
-    color : '#90949c'
-  },
-  right : {
-    fontSize : 16,
-    lineHeight : 16,
-    marginTop : 6
-  },
-  action : {
-    color : '#5990dc'
-  },
-  notice : {
-    color : '#d0021b'
-  }
+
+  action : { color : '#5990dc' },
+  notice : { color : '#d0021b' }
+
 })
 
 export default Text

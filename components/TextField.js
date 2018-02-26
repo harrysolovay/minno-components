@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, Touchable, Text } from 'components'
+import { View, TextInput, Text } from 'components'
 import { StyleSheet } from 'react-native'
 
 const TextField = (props) => (
@@ -11,7 +11,7 @@ const TextField = (props) => (
         { ...props }
       />
     </View>
-    <Touchable style={ styles.right }
+    <View style={ styles.right }
       onPress={ () => { console.log('sent or submitted') } }
     >
       {
@@ -26,7 +26,7 @@ const TextField = (props) => (
             { props.rightText }
           </Text>
       }
-    </Touchable>
+    </View>
   </View>
 )
 

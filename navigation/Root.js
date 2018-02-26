@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, ActionSheet } from 'components'
-import { Sandbox } from 'navigation'
+import { Tabs } from 'navigation'
 
 
 
@@ -8,8 +8,8 @@ class Root extends Component {
 
   render() {
     return (
-      <View style={{ flex : 1 }}>
-        <Sandbox />
+      <View flex>
+        <Tabs />
         <ActionSheet />
       </View>
     )

@@ -1,35 +1,57 @@
 import React from 'react'
-import { View as ReactNativeView } from 'react-native'
+import { View as ReactNativeView, TouchableOpacity, StyleSheet } from 'react-native'
 import {
-  HEADER_HEIGHT,
-  TAB_BAR_HEIGHT
+  SCREEN_WIDTH, SCREEN_HEIGHT,
+  HEADER_HEIGHT, TAB_BAR_HEIGHT
 } from 'constants'
 
 const View = (props) => {
 
-  const styles = [
-
-    props.screen ? { flex : 1 } : null,
-    props.hasHeader ? { paddingTop : HEADER_HEIGHT } : null,
-    props.hasTabBar ? { paddingBottom : TAB_BAR_HEIGHT } : null,
-
-    props.centerChildren ? { flex : 1, alignItems : 'center', justifyContent : 'center' } : null,
-    props.verticallyCenterChildren ? { flex : 1, justifyContent : 'center' } : null,
-    props.horizontallyCenterChildren ? { flex : 1, alignItems : 'center' } : null,
-
-    props.style
-
-  ]
+  const Type = props.onPress
+    ? TouchableOpacity
+    : ReactNativeView
 
   return (
-
-    <ReactNativeView
+    <Type
       { ...props }
-      style={ styles }
-    />
+      style={[
 
+        props.flex ? styles.flex : null,
+
+        props.hasHeader ? styles.hasHeader : null,
+        props.hasTabBar ? styles.hasTabBar : null,
+
+        props.centerChildren ? styles.centerChildren : null,
+        props.verticallyCenterChildren ? styles.verticallyCenterChildren : null,
+        props.horizontallyCenterChildren ? styles.horizontallyCenterChildren : null,
+
+        props.style
+
+      ]}
+      activeOpacity={ 1 }
+    />
   )
 
 }
+
+const styles = StyleSheet.create({
+
+  flex : { flex : 1 },
+
+  hasHeader : { paddingTop : HEADER_HEIGHT },
+  hasTabBar : { paddingBottom : TAB_BAR_HEIGHT },
+
+  centerChildren : {
+    alignItems : 'center',
+    justifyContent : 'center'
+  },
+  verticallyCenterChildren : {
+    justifyContent : 'center'
+  },
+  horizontallyCenterChildren : {
+    alignItems : 'center'
+  }
+
+})
 
 export default View

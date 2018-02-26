@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Touchable, Graphic } from 'components'
+import { View, Text, Graphic } from 'components'
 import { STATUS_BAR_HEIGHT } from 'constants'
 import { StyleSheet, Linking, Alert, CameraRoll } from 'react-native'
 import { Camera, Permissions } from 'expo'
@@ -39,7 +39,7 @@ class Capture extends Component {
                     color='#fff'
                   />
             }
-            <Touchable
+            <View
               onPress={ this._takePicture }
               style={ styles.captureButton }
             />

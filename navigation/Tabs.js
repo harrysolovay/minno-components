@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Animated, StyleSheet, Keyboard } from 'react-native'
 import { Posts, Capture, Account } from 'screens'
-import { View, Header, Composer, Touchable, Graphic } from 'components'
+import { View, Header, Composer, Graphic } from 'components'
 import { HEADER_HEIGHT, TAB_BAR_HEIGHT, SCREEN_WIDTH, NOTCH_HEIGHT} from 'constants'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 
@@ -27,7 +27,7 @@ class Tabs extends Component {
     })
 
     return (
-      <View style={{ flex : 1 }}>
+      <View flex>
 
         <Header
           center='search'
@@ -65,11 +65,10 @@ class Tabs extends Component {
             containerStyle={ styles.tabsContainer }
             renderDots={ activeIndex => (
               [ 'posts', 'capture', 'account' ].map((iconName, i) => (
-                <Touchable
+                <View flex centerChildren
                   onPress={ () => {
                     this.carouselRef._snapToItem(this.carouselRef._getPositionIndex(i))
                   }}
-                  style={ styles.tab }
                   key={ i }
                 >
                   <Graphic
@@ -78,7 +77,7 @@ class Tabs extends Component {
                     color={ i === activeIndex ? '#5990dc' : '#000' }
                     style={ styles.tabIcon }
                   />
-                </Touchable>
+                </View>
               ))
             )}
             activeDotIndex={ this.state.activeTab }
@@ -115,20 +114,16 @@ const styles = StyleSheet.create({
     right : 0,
     bottom : 0,
     left : 0,
-    borderTopWidth : 1,
-    borderColor : '#ddd',
+    paddingBottom : NOTCH_HEIGHT,
     backgroundColor : '#fff',
-    paddingBottom : NOTCH_HEIGHT
+    borderTopWidth : 1,
+    borderColor : '#ddd'
   },
   tabsContainer : {
     flexDirection : 'row',
     height : 50,
     paddingTop : 0,
     paddingBottom : 0
-  },
-  tab : {
-    flex : 1,
-    alignItems : 'center'
   },
   tabIcon : {
     marginTop : 1.5

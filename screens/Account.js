@@ -5,7 +5,7 @@ class Account extends Component {
 
   render() {
     return (
-      <View screen hasHeader hasTabBar>
+      <View flex hasHeader hasTabBar>
         <FlatList
           showsVerticalScrollIndicator={ false }
           data={[
