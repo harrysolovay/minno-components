@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput as ReactNativeTextInput, StyleSheet } from 'react-native'
+import { TextInput as ReactNativeTextInput, Keyboard, StyleSheet } from 'react-native'
 
 const TextInput = (props) => (
   <ReactNativeTextInput

@@ -10,7 +10,7 @@ class Posts extends Component {
 
   render() {
     return (
-      <View flex hasHeader
+      <View flexOne hasHeader
         style={{ paddingBottom : TAB_BAR_HEIGHT + this.props.composerHeight }}
       >
         <FlatList

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Animated, StyleSheet, Keyboard } from 'react-native'
+import { inject, observer } from 'mobx-react'
+import { Animated, Keyboard, StyleSheet } from 'react-native'
 import { Posts, Capture, Account } from 'screens'
-import { View, Header, Composer, Graphic } from 'components'
+import { View, Header, Text, ActionSheetTrigger, Composer, Graphic } from 'components'
 import { HEADER_HEIGHT, TAB_BAR_HEIGHT, SCREEN_WIDTH, NOTCH_HEIGHT} from 'constants'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 
-
+@inject('statusBarStore') @observer
 class Tabs extends Component {
 
   state = {
@@ -65,7 +66,7 @@ class Tabs extends Component {
             containerStyle={ styles.tabsContainer }
             renderDots={ activeIndex => (
               [ 'posts', 'capture', 'account' ].map((iconName, i) => (
-                <View flex centerChildren
+                <View flexOne centerChildren
                   onPress={ () => {
                     this.carouselRef._snapToItem(this.carouselRef._getPositionIndex(i))
                   }}
@@ -94,12 +95,15 @@ class Tabs extends Component {
 
   _onScroll = (e) => {
     this.state.scrollX.setValue(e.nativeEvent.contentOffset.x)
+    Keyboard.dismiss()
   }
 
   _onSnapToItem = (i) => {
     this.setState({ activeTab : i })
-    if(i !== 0)
-      Keyboard.dismiss()
+    if ( i === 1 )
+      this.props.statusBarStore.lightenStyle()
+    else
+      this.props.statusBarStore.darkenStyle()
   }
 
   _onComposerInputResize = (e) => {

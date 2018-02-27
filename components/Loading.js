@@ -17,7 +17,7 @@ class Loading extends Component {
     })
 
     return (
-      <View centerChildren>
+      <View flexOne centerChildren>
         {
           this.props.image &&
             <Graphic
@@ -32,7 +32,7 @@ class Loading extends Component {
           style={[ styles.spinner, { transform : [{ rotate : spin }] } ]}
         />
         {
-          ( this.props.title || this.props.subtitle ) &&
+          this.props.title &&
             <HeadingGroup
               center
               title={ this.props.title }

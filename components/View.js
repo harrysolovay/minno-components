@@ -16,7 +16,7 @@ const View = (props) => {
       { ...props }
       style={[
 
-        props.flex ? styles.flex : null,
+        props.flexOne ? styles.flexOne : null,
 
         props.hasHeader ? styles.hasHeader : null,
         props.hasTabBar ? styles.hasTabBar : null,
@@ -36,7 +36,7 @@ const View = (props) => {
 
 const styles = StyleSheet.create({
 
-  flex : { flex : 1 },
+  flexOne : { flex : 1 },
 
   hasHeader : { paddingTop : HEADER_HEIGHT },
   hasTabBar : { paddingBottom : TAB_BAR_HEIGHT },

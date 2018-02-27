@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { View, Cell, HeadingGroups, HeadingGroup } from 'components'
+import { Bar, HeadingGroups, HeadingGroup } from 'components'
 
 const Heading = (props) => (
-  <Cell leftHeavy
-    onPress={ props.onPress }
+  <Bar leftHeavy
+    onPress={ props.groups ? null : props.onPress }
     style={ props.style }
     left={
       props.groups
@@ -22,6 +22,5 @@ const Heading = (props) => (
     right={ props.right }
   />
 )
-
 
 export default Heading

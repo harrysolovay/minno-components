@@ -8,7 +8,9 @@ const Text = (props) => (
 
       styles.text,
 
-      props.fillContainer ? styles.fillContainer : null,
+      props.padding ? styles.padding : null,
+
+      props.header ? styles.header : null,
 
       props.action ? styles.action : null,
       props.notice ? styles.notice : null,
@@ -30,10 +32,20 @@ const styles = StyleSheet.create({
     color : '#000'
   },
 
-  fillContainer : {
-    paddingTop : 16,
+  padding : {
+    paddingTop : 16.5,
     paddingRight : 15,
-    paddingBottom : 10,
+    paddingBottom : 9.5,
+    paddingLeft : 15
+  },
+
+  header : {
+    fontFamily : 'FuturaLTBook',
+    fontSize : 18,
+    lineHeight : 19,
+    paddingTop : 18,
+    paddingRight : 15,
+    paddingBottom : 11,
     paddingLeft : 15
   },
 

@@ -3,7 +3,16 @@ import { View, Text, Graphic } from 'components'
 import { LinearGradient } from 'expo'
 import { StyleSheet } from 'react-native'
 
-const ICONS = {
+const GRAPHIC_PROPS = {
+
+  back : {
+    icon : 'back',
+    size : 40,
+    style : {
+      marginTop : 4,
+      marginLeft : 15
+    }
+  },
 
   rightArrow : {
     icon : 'rightArrow',
@@ -12,6 +21,15 @@ const ICONS = {
       marginTop : 2,
       marginRight : 4
     }
+  },
+
+  search : {
+    image : 'search',
+    style : {
+      width : 20,
+      height : 20,
+      marginTop : 1
+    }
   }
 
 }
@@ -19,9 +37,9 @@ const ICONS = {
 const Slot = (props) => {
   return props.contents
     ? typeof props.contents === 'string'
-      ? Object.keys(ICONS).includes(props.contents)
+      ? Object.keys(GRAPHIC_PROPS).includes(props.contents)
         ? <Graphic
-            { ...ICONS[props.contents] }
+            { ...GRAPHIC_PROPS[props.contents] }
           />
         : <Text
             text={ props.contents }
@@ -30,7 +48,7 @@ const Slot = (props) => {
     : null
 }
 
-const Cell = (props) => (
+const Bar = (props) => (
 
   <View
     onPress={ props.onPress }
@@ -51,11 +69,21 @@ const Cell = (props) => (
           : [ styles.absolute, { left : 0 } ]
       ]}
     >
-      <Slot contents={ props.left } />
+      <Slot
+        contents={ props.left }
+      />
     </View>
 
-    <View>
-      <Slot contents={ props.center } />
+    <View
+      style={[
+        props.height
+          ? { height : props.height, justifyContent : 'center' }
+          : null
+      ]}
+    >
+      <Slot
+        contents={ props.center }
+      />
     </View>
 
     <LinearGradient
@@ -67,7 +95,9 @@ const Cell = (props) => (
         { right : 0 }
       ]}
     >
-      <Slot contents={ props.right } />
+      <Slot
+        contents={ props.right }
+      />
     </LinearGradient>
 
   </View>
@@ -96,4 +126,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Cell
+export default Bar
