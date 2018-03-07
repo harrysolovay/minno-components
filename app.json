@@ -4,7 +4,6 @@
     "description" : "A minimal disappearing content network",
 
     "orientation" : "portrait",
-    "platforms" : [ "ios" ],
 
     "primaryColor" : "#5990dc",
     "icon" : "./assets/images/icon.png",

@@ -22,19 +22,18 @@
   },
   "dependencies": {
     "expo": "^25.0.0",
+    "faker": "^4.1.0",
     "mobx": "^3.5.1",
     "mobx-react": "^4.4.2",
     "react": "16.2.0",
     "react-native": "0.52.0",
-    "react-native-actionsheet": "^2.3.0",
     "react-native-code-input": "^1.0.6",
     "react-native-iphone-x-helper": "^1.0.2",
-    "react-native-keyboard-accessory": "0.0.4",
     "react-native-modalbox": "^1.4.2",
-    "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-snap-carousel": "^3.6.0",
     "react-native-status-bar-height": "^2.0.0",
-    "react-native-swipe-gestures": "^1.0.2",
-    "react-navigation": "^1.0.3"
+    "react-native-tab-view": "0.0.74",
+    "react-navigation": "^1.0.3",
+    "time-ago": "^0.2.1"
   }
 }

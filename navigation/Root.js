@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StatusBar, ActionSheet } from 'components'
-import { Tabs } from 'navigation'
+import { Tabs, Sandbox } from 'navigation'
 
 
 

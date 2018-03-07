@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native'
 const Group = (props) => (
   <View
     style={[
-      styles.view,
+      styles.container,
       props.center ? styles.center : null,
       props.precedent ? styles.precedent : null,
       props.style,
@@ -21,7 +21,7 @@ const Group = (props) => (
     }
     {
       props.subtitle &&
-        <Text
+        <Text secondary
           text={ props.subtitle }
           style={ styles.subtitle }
           onPress={ props.onSubtitlePress }
@@ -31,7 +31,7 @@ const Group = (props) => (
 )
 
 const styles = StyleSheet.create({
-  view : {
+  container : {
     paddingTop : 12,
     paddingBottom : 6,
   },
@@ -49,8 +49,7 @@ const styles = StyleSheet.create({
   },
   subtitle : {
     fontSize : 16,
-    lineHeight : 16,
-    color : '#90949c'
+    lineHeight : 16
   }
 })
 

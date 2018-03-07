@@ -5,7 +5,7 @@ class Capture extends Component {
 
   render() {
     return (
-      <View flexOne hasTabBar>
+      <View screen hasTabBar>
         <CaptureComponent />
       </View>
     )

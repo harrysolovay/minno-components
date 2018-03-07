@@ -26,13 +26,15 @@ class Stage extends Component {
 
 class ProgressBar extends Component {
 
+  state = { stagesProgress : this._setStagesProgress(this.props) }
+
   render() {
     return (
       <View
         style={ styles.stages }
       >
         {
-          [1, 1, .3].map((progress, i) => {
+          this.state.stagesProgress.map((progress, i) => {
             return (
               <Stage
                 progress={ progress }
@@ -43,6 +45,37 @@ class ProgressBar extends Component {
         }
       </View>
     )
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ stagesProgress : this._setStagesProgress(props) })
+  }
+
+  _setStagesProgress(props) {
+
+    if(props.progress < 0)
+      props.progress = 0
+
+    let currentStageProgress = props.progress % 1,
+        stagesCompleted = Math.floor(props.progress),
+        stagesIncompleted = Math.floor(props.stages - props.progress)
+
+    let stagesProgress = []
+
+    if(props.progress >= 0) {
+      for(let i = 0; i < stagesCompleted; i++ ) {
+        stagesProgress.push(1)
+      }
+    }
+
+    if(currentStageProgress !== 0)
+      stagesProgress.push(currentStageProgress)
+
+    for(let i = 0; i < stagesIncompleted; i++) {
+      stagesProgress.push(0)
+    }
+
+    return stagesProgress
   }
 
 }
@@ -56,7 +89,6 @@ const styles = StyleSheet.create({
   stage : {
     flex : 1,
     height : 5,
-    backgroundColor : '#000',
     borderRadius : 2.5,
     marginRight : 2.5,
     marginLeft : 2.5
@@ -64,7 +96,8 @@ const styles = StyleSheet.create({
   background : {
     flex : 1,
     height : 5,
-    borderRadius : 2.5
+    borderRadius : 2.5,
+    backgroundColor : 'rgba(74, 144, 226, .25)',
   },
   progress : {
     position : 'absolute',

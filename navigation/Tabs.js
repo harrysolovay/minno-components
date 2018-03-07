@@ -5,6 +5,7 @@ import { Posts, Capture, Account } from 'screens'
 import { View, Header, Text, ActionSheetTrigger, Composer, Graphic } from 'components'
 import { HEADER_HEIGHT, TAB_BAR_HEIGHT, SCREEN_WIDTH, NOTCH_HEIGHT} from 'constants'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
+import { TabViewAnimated, TabBar, TabViewPagerExperimental } from 'react-native-tab-view'
 
 @inject('statusBarStore') @observer
 class Tabs extends Component {

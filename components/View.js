@@ -16,6 +16,8 @@ const View = (props) => {
       { ...props }
       style={[
 
+        props.screen ? styles.screen : null,
+
         props.flexOne ? styles.flexOne : null,
 
         props.hasHeader ? styles.hasHeader : null,
@@ -35,6 +37,11 @@ const View = (props) => {
 }
 
 const styles = StyleSheet.create({
+
+  screen : {
+    width : SCREEN_WIDTH,
+    height : SCREEN_HEIGHT
+  },
 
   flexOne : { flex : 1 },
 

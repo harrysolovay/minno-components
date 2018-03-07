@@ -1,8 +1,8 @@
 import React from 'react'
-import { Image as ReactNativeImage } from 'react-native'
+import { Video as ExpoVideo } from 'expo'
 
-const Image = (props) => (
-  <ReactNativeImage
+const Video = (props) => (
+  <ExpoVideo
     resizeMode={
       props.cover
         ? 'cover'
@@ -16,4 +16,4 @@ const Image = (props) => (
   />
 )
 
-export default Image
+export default Video

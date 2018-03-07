@@ -12,7 +12,8 @@
             'components' : './components',
             'constants' : './constants',
             'stores' : './stores',
-            'assets' : './assets'
+            'assets' : './assets',
+            'API' : './API'
           }
         }],
       	"transform-decorators-legacy"

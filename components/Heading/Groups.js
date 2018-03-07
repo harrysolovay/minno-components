@@ -21,6 +21,7 @@ const Groups = (props) => (
   />
 )
 
+
 const styles = StyleSheet.create({
   flatList : {
     paddingLeft : 14

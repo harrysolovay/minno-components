@@ -11,7 +11,9 @@ const Text = (props) => (
       props.padding ? styles.padding : null,
 
       props.header ? styles.header : null,
+      props.body ? styles.body : null,
 
+      props.secondary ? styles.secondary : null,
       props.action ? styles.action : null,
       props.notice ? styles.notice : null,
 
@@ -32,6 +34,11 @@ const styles = StyleSheet.create({
     color : '#000'
   },
 
+  body : {
+    fontSize : 16,
+    lineHeight : 16.5
+  },
+
   padding : {
     paddingTop : 16.5,
     paddingRight : 15,
@@ -49,6 +56,7 @@ const styles = StyleSheet.create({
     paddingLeft : 15
   },
 
+  secondary : { color : '#90949c' },
   action : { color : '#5990dc' },
   notice : { color : '#d0021b' }
 

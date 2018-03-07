@@ -4,6 +4,7 @@ import FlatList from './FlatList'
 import Text from './Text'
 import Image from './Image'
 import Graphic from './Graphic'
+import Video from './Video'
 
 import Bar from './Bar'
 import TextInput from './TextInput'
@@ -26,7 +27,7 @@ import Composer from './Composer'
 
 import Capture from './Capture'
 
-import Story from './Story'
+import Post, { Media, Blurb, CommentsPreview } from './Post'
 
 import { StyleSheet } from 'react-native'
 
@@ -39,6 +40,7 @@ export {
   Text,
   Graphic,
   Image,
+  Video,
 
   Bar,
   TextInput,
@@ -61,7 +63,7 @@ export {
 
   Capture,
 
-  Story,
+  Post, Media, Blurb, CommentsPreview,
 
   StyleSheet
 
